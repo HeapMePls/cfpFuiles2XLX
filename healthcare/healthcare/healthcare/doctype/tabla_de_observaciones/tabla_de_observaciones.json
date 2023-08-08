@@ -1,0 +1,52 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:tdo-{#####}",
+ "creation": "2023-07-17 12:50:02.244208",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "observacion",
+  "nombre_del_practicante",
+  "fecha"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "observacion",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Evoluci\u00f3n/Valoraci\u00f3n"
+  },
+  {
+   "default": "user",
+   "fieldname": "nombre_del_practicante",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nombre del practicante",
+   "read_only": 1
+  },
+  {
+   "default": "now",
+   "fieldname": "fecha",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Fecha",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-07-21 19:21:52.550140",
+ "modified_by": "Administrator",
+ "module": "Healthcare",
+ "name": "Tabla de observaciones",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

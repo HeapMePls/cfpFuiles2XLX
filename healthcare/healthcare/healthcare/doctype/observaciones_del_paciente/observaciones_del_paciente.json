@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:obs-{patient}-{#####}",
+ "creation": "2023-07-11 10:54:06.977809",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "patient",
+  "observaciones_",
+  "registro_m\u00e9dico",
+  "fecha",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "label": "Paciente",
+   "options": "Patient"
+  },
+  {
+   "fieldname": "fecha",
+   "fieldtype": "Datetime",
+   "label": "Fecha"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Observaciones del paciente",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "observaciones_",
+   "fieldtype": "Table",
+   "label": "Registro de Enfermer\u00eda",
+   "options": "Tabla de observaciones"
+  },
+  {
+   "fieldname": "registro_m\u00e9dico",
+   "fieldtype": "Table",
+   "label": "Registro M\u00e9dico",
+   "options": "Tabla de observaciones"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-07-31 14:40:59.934310",
+ "modified_by": "Administrator",
+ "module": "Healthcare",
+ "name": "Observaciones del paciente",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
+}

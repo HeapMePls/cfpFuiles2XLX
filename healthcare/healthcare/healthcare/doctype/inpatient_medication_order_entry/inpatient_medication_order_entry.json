@@ -1,0 +1,121 @@
+{
+ "actions": [],
+ "creation": "2020-09-14 21:51:30.259164",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "drug",
+  "mg",
+  "observaciones",
+  "usuario",
+  "drug_name",
+  "dosage",
+  "dosage_form",
+  "instructions",
+  "column_break_4",
+  "date",
+  "time",
+  "is_completed"
+ ],
+ "fields": [
+  {
+   "fieldname": "drug",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Medicamento",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "drug.item_name",
+   "fieldname": "drug_name",
+   "fieldtype": "Data",
+   "label": "Drug Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dosage",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Dosage",
+   "options": "Prescription Dosage",
+   "reqd": 1
+  },
+  {
+   "fieldname": "dosage_form",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Presentacion",
+   "options": "Dosage Form",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "now",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Time",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_completed",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Order Completed",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "instructions",
+   "fieldtype": "Small Text",
+   "label": "Instructions",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "mg",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mg"
+  },
+  {
+   "default": "user",
+   "fieldname": "usuario",
+   "fieldtype": "Data",
+   "label": "Usuario",
+   "read_only": 1
+  },
+  {
+   "fieldname": "observaciones",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Observaciones"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-08-07 17:45:03.086292",
+ "modified_by": "Administrator",
+ "module": "Healthcare",
+ "name": "Inpatient Medication Order Entry",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

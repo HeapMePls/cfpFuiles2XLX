@@ -1,0 +1,662 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"xJDhIChpR5\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h1\\\">Casa Fuente del Prado</span>\",\"col\":12}},{\"id\":\"CLoJOH8_MO\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"e-FJYtVQBt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Registrar un Paciente\",\"col\":12}},{\"id\":\"AvoRZ64TCV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Programar Admisi\u00f3n\",\"col\":12}},{\"id\":\"VYcwX9IaUN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Historia del Paciente\",\"col\":12}},{\"id\":\"CbviT4pXKA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Notificaciones\",\"col\":12}},{\"id\":\"z0nF6Hnfb5\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"t0pJdPuKm0\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Hombres</span>\",\"col\":6}},{\"id\":\"_XUzevL2Mv\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Mujeres</span>\",\"col\":6}},{\"id\":\"UMBvKw6m2w\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Camas Reservadas \",\"col\":6}},{\"id\":\"8zJCmBHUMl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Camas Reservadas\",\"col\":6}},{\"id\":\"qTpw7kVrZn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes Internados   \",\"col\":6}},{\"id\":\"GNVPvhYsgF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes Internados\",\"col\":6}},{\"id\":\"6vIPr67g8R\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes en Alta Programada\",\"col\":6}},{\"id\":\"n-JoAt8v6G\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes en Alta Programada  \",\"col\":6}},{\"id\":\"Hx750Z4MHV\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"WzcfoYwezD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lista de pacientes\",\"col\":6}},{\"id\":\"vkOOxsnAdU\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lista de Pacientes\",\"col\":6}},{\"id\":\"pGVWYvpY4R\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"kco8kM0FYC\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Camas Disponibles</span>\",\"col\":12}},{\"id\":\"0ZHoNuPb-f\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hombres - Sector Adelante\",\"col\":6}},{\"id\":\"p76NsllMGN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mujeres - Sector Adelante\",\"col\":6}},{\"id\":\"tMZ5Blyjzp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hombres - Sector Atras\",\"col\":6}},{\"id\":\"lDvU6iv0Xt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mujeres - Sector Atras\",\"col\":6}},{\"id\":\"Y2dS1S__ZT\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"35nwh3IIvw\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"lkl5hbEjh_\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b><span class=\\\"h3\\\">Stock de Medicaci\u00f3n</span></b></span>\",\"col\":12}},{\"id\":\"5zMNQyiSCw\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Orden de Medicacion\",\"col\":12}},{\"id\":\"XYtsLy4bo_\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Validar medicaci\u00f3n\",\"col\":12}}]",
+ "creation": "2020-03-02 17:23:17.919682",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "healthcare",
+ "idx": 1,
+ "is_hidden": 0,
+ "label": "CFP",
+ "links": [
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Patient",
+   "link_count": 0,
+   "link_to": "Patient",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Healthcare Practitioner",
+   "link_count": 0,
+   "link_to": "Healthcare Practitioner",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Practitioner Schedule",
+   "link_count": 0,
+   "link_to": "Practitioner Schedule",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Medical Department",
+   "link_count": 0,
+   "link_to": "Medical Department",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Appointment Type",
+   "link_count": 0,
+   "link_to": "Appointment Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Clinical Procedure Template",
+   "link_count": 0,
+   "link_to": "Clinical Procedure Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Prescription Dosage",
+   "link_count": 0,
+   "link_to": "Prescription Dosage",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Prescription Duration",
+   "link_count": 0,
+   "link_to": "Prescription Duration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Antibiotic",
+   "link_count": 0,
+   "link_to": "Antibiotic",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Complaint",
+   "link_count": 0,
+   "link_to": "Complaint",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Diagnosis",
+   "link_count": 0,
+   "link_to": "Diagnosis",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Treatment Plan Template",
+   "link_count": 0,
+   "link_to": "Treatment Plan Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Patient Appointment",
+   "link_count": 0,
+   "link_to": "Patient Appointment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Clinical Procedure",
+   "link_count": 0,
+   "link_to": "Clinical Procedure",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Patient Encounter",
+   "link_count": 0,
+   "link_to": "Patient Encounter",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Vital Signs",
+   "link_count": 0,
+   "link_to": "Vital Signs",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Fee Validity",
+   "link_count": 0,
+   "link_to": "Fee Validity",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Healthcare Service Unit Type",
+   "link_count": 0,
+   "link_to": "Healthcare Service Unit Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Healthcare Service Unit",
+   "link_count": 0,
+   "link_to": "Healthcare Service Unit",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Medical Code Standard",
+   "link_count": 0,
+   "link_to": "Medical Code Standard",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Medical Code",
+   "link_count": 0,
+   "link_to": "Medical Code",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Healthcare Settings",
+   "link_count": 0,
+   "link_to": "Healthcare Settings",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Patient History Settings",
+   "link_count": 0,
+   "link_to": "Patient History Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Lab Test Template",
+   "link_count": 0,
+   "link_to": "Lab Test Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Lab Test Sample",
+   "link_count": 0,
+   "link_to": "Lab Test Sample",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Lab Test UOM",
+   "link_count": 0,
+   "link_to": "Lab Test UOM",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sensitivity",
+   "link_count": 0,
+   "link_to": "Sensitivity",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dosage Form",
+   "link_count": 0,
+   "link_to": "Dosage Form",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Lab Test",
+   "link_count": 0,
+   "link_to": "Lab Test",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sample Collection",
+   "link_count": 0,
+   "link_to": "Sample Collection",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inpatient Medication Order",
+   "link_count": 0,
+   "link_to": "Inpatient Medication Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inpatient Record",
+   "link_count": 0,
+   "link_to": "Inpatient Record",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inpatient Medication Entry",
+   "link_count": 0,
+   "link_to": "Inpatient Medication Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Exercise Type",
+   "link_count": 0,
+   "link_to": "Exercise Type",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Therapy Type",
+   "link_count": 0,
+   "link_to": "Therapy Type",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Therapy Plan Template",
+   "link_count": 0,
+   "link_to": "Therapy Plan Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Therapy Plan",
+   "link_count": 0,
+   "link_to": "Therapy Plan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Therapy Session",
+   "link_count": 0,
+   "link_to": "Therapy Session",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Patient Assessment Template",
+   "link_count": 0,
+   "link_to": "Patient Assessment Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Patient Assessment",
+   "link_count": 0,
+   "link_to": "Patient Assessment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Patient History",
+   "link_count": 0,
+   "link_to": "patient_history",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Patient Progress",
+   "link_count": 0,
+   "link_to": "patient-progress",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Patient Medical Record",
+   "link_count": 0,
+   "link_to": "Patient Medical Record",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inpatient Record",
+   "link_count": 0,
+   "link_to": "Inpatient Record",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2023-08-08 09:42:14.516050",
+ "modified_by": "Administrator",
+ "module": "Healthcare",
+ "name": "CFP",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "Healthcare",
+ "roles": [],
+ "sequence_id": 3.0,
+ "shortcuts": [
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "format": "{} Disponibles",
+   "label": "Mujeres - Sector Adelante",
+   "link_to": "Healthcare Service Unit",
+   "stats_filter": "{\"company\":[\"=\",\"Casa Fuente del Prado\"],\"occupancy_status\":[\"=\",\"Vacant\"],\"is_group\":[\"=\",0],\"service_unit_type\":[\"=\",\"Mujeres - Sector Adelante\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "format": "{} Para el Alta",
+   "label": "Pacientes en Alta Programada  ",
+   "link_to": "Inpatient Record",
+   "stats_filter": "{\"gender\":[\"=\",\"Female\"],\"status\":[\"=\",\"Discharge Scheduled\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "format": "{} Active",
+   "label": "Lista de pacientes",
+   "link_to": "Patient",
+   "stats_filter": "{\"sex\":[\"=\",\"Male\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "format": "{} Para el Alta",
+   "label": "Pacientes en Alta Programada",
+   "link_to": "Inpatient Record",
+   "stats_filter": "{\"gender\":[\"=\",\"Male\"],\"status\":[\"=\",\"Discharge Scheduled\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "format": "{} Reservadas",
+   "label": "Camas Reservadas ",
+   "link_to": "Inpatient Record",
+   "stats_filter": "{\"gender\":[\"=\",\"Male\"],\"status\":[\"=\",\"Admission Scheduled\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "format": "{} Reservadas",
+   "label": "Camas Reservadas",
+   "link_to": "Inpatient Record",
+   "stats_filter": "{\"gender\":[\"=\",\"Female\"],\"status\":[\"=\",\"Admission Scheduled\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "New",
+   "format": "{} Active",
+   "label": "Registrar un Paciente",
+   "link_to": "Patient",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "format": "{} Disponibles",
+   "label": "Hombres - Sector Adelante",
+   "link_to": "Healthcare Service Unit",
+   "stats_filter": "{\"company\":[\"=\",\"Casa Fuente del Prado\"],\"service_unit_type\":[\"=\",\"Hombres - Sector Adelante\"],\"occupancy_status\":[\"=\",\"Vacant\"],\"is_group\":[\"=\",0]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "format": "Total: {}",
+   "label": "Pacientes Internados   ",
+   "link_to": "Inpatient Record",
+   "stats_filter": "{\"gender\":[\"=\",\"Male\"],\"status\":[\"=\",\"Admitted\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "format": "{} Disponibles",
+   "label": "Hombres - Sector Atras",
+   "link_to": "Healthcare Service Unit",
+   "stats_filter": "{\"company\":[\"=\",\"Casa Fuente del Prado\"],\"occupancy_status\":[\"=\",\"Vacant\"],\"service_unit_type\":[\"=\",\"Hombres - Sector Atras\"],\"is_group\":[\"=\",0]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "New",
+   "format": "{} Open",
+   "label": "Programar Admisi\u00f3n",
+   "link_to": "Patient Encounter",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Validar medicaci\u00f3n",
+   "link_to": "Inpatient Medication Entry",
+   "type": "DocType"
+  },
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "format": "{} Disponibles",
+   "label": "Mujeres - Sector Atras",
+   "link_to": "Healthcare Service Unit",
+   "stats_filter": "{\"company\":[\"=\",\"Casa Fuente del Prado\"],\"occupancy_status\":[\"=\",\"Vacant\"],\"service_unit_type\":[\"=\",\"Mujeres - Sector Atras\"],\"is_group\":[\"=\",0]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "format": "Total: {}",
+   "label": "Pacientes Internados",
+   "link_to": "Inpatient Record",
+   "stats_filter": "{\"gender\":[\"=\",\"Female\"],\"status\":[\"=\",\"Admitted\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "format": "{} Active",
+   "label": "Lista de Pacientes",
+   "link_to": "Patient",
+   "stats_filter": "{\"sex\":[\"=\",\"Female\"]}",
+   "type": "DocType"
+  },
+  {
+   "label": "Historia del Paciente",
+   "link_to": "patient_history",
+   "type": "Page"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Orden de Medicacion",
+   "link_to": "Inpatient Medication Order",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Notificaciones",
+   "link_to": "Task",
+   "stats_filter": "{\"company\":[\"=\",\"Casa Fuente del Prado\"]}",
+   "type": "DocType"
+  }
+ ],
+ "title": "CFP"
+}
