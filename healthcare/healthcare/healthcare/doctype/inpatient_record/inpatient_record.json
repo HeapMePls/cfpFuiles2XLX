@@ -17,6 +17,7 @@
   "registro_m\u00e9dico",
   "section_break_muunk",
   "patient",
+  "start_date",
   "patient_name",
   "gender",
   "blood_group",
@@ -51,6 +52,7 @@
   "admission_instruction",
   "encounter_details_section",
   "diagnostico_principal",
+  "mingreso",
   "chief_complaint",
   "celiaco",
   "gastritis",
@@ -64,7 +66,7 @@
   "fecha_guardado",
   "medication_section",
   "drug_prescription",
-  "medication_order",
+  "medication_orders",
   "investigations_section",
   "lab_test_prescription",
   "procedures_section",
@@ -127,6 +129,8 @@
    "label": "Registros de Enfermeria"
   },
   {
+   "columns": 1,
+   "description": "Luego de agregar una fila, presionar el boton 'Guardar'.",
    "fieldname": "observaciones_",
    "fieldtype": "Table",
    "label": "Registros de Enfermeria",
@@ -139,6 +143,7 @@
    "label": "Registro M\u00e9dico"
   },
   {
+   "description": "Luego de agregar un fila, presionar el boton 'Guardar'.",
    "fieldname": "registro_m\u00e9dico",
    "fieldtype": "Table",
    "label": "Registro M\u00e9dico ",
@@ -197,6 +202,7 @@
   },
   {
    "fetch_from": "patient.email",
+   "fetch_if_empty": 1,
    "fieldname": "email",
    "fieldtype": "Data",
    "label": "Email "
@@ -210,6 +216,7 @@
   },
   {
    "fetch_from": "patient.phone",
+   "fetch_if_empty": 1,
    "fieldname": "phone",
    "fieldtype": "Data",
    "label": "Phone"
@@ -387,8 +394,7 @@
    "fieldtype": "Table MultiSelect",
    "label": "Motivo de Ingreso",
    "mandatory_depends_on": "//eval:doc.status ==\"Admitted\"",
-   "options": "Patient Encounter Symptom",
-   "permlevel": 1
+   "options": "Patient Encounter Symptom"
   },
   {
    "default": "0",
@@ -417,8 +423,7 @@
    "fieldtype": "Table MultiSelect",
    "label": "Diagnostico",
    "mandatory_depends_on": "//eval:doc.status ==\"Admitted\"",
-   "options": "Patient Encounter Diagnosis",
-   "permlevel": 1
+   "options": "Patient Encounter Diagnosis"
   },
   {
    "default": "0",
@@ -450,7 +455,6 @@
    "label": "Fecha guardado"
   },
   {
-   "collapsible": 1,
    "depends_on": "eval:!doc.__islocal;",
    "fieldname": "medication_section",
    "fieldtype": "Section Break",
@@ -461,8 +465,7 @@
    "fieldname": "drug_prescription",
    "fieldtype": "Table",
    "label": "Medicaci\u00f3n",
-   "options": "Drug Prescription",
-   "permlevel": 1
+   "options": "Drug Prescription"
   },
   {
    "collapsible": 1,
@@ -610,10 +613,21 @@
    "read_only": 1
   },
   {
-   "fieldname": "medication_order",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "medication_orders",
    "fieldtype": "Table",
    "label": "Entrada de Medicacion",
    "options": "Inpatient Medication Order Entry"
+  },
+  {
+   "fieldname": "mingreso",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "oculto"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -623,7 +637,11 @@
    "link_fieldname": "reference_name"
   }
  ],
- "modified": "2023-08-08 09:35:47.539016",
+<<<<<<< Updated upstream
+ "modified": "2023-08-14 15:15:47.342004",
+=======
+ "modified": "2023-08-14 13:49:40.834253",
+>>>>>>> Stashed changes
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Inpatient Record",

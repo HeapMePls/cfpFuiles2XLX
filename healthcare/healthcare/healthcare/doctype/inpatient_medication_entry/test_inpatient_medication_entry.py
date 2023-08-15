@@ -12,7 +12,7 @@ from healthcare.healthcare.doctype.inpatient_medication_entry.inpatient_medicati
 	get_drug_shortage_map,
 	make_difference_stock_entry,
 )
-from healthcare.healthcare.doctype.inpatient_medication_order.test_inpatient_medication_order import (
+from healthcare.healthcare.doctype.inpatient_medication_orders.test_inpatient_medication_orders import (
 	create_ipme,
 	create_ipmo,
 )
@@ -130,7 +130,7 @@ class TestInpatientMedicationEntry(FrappeTestCase):
 		stock_entry = make_difference_stock_entry(ipme.name)
 		self.assertEqual(stock_entry.items[0].item_code, "Dextromethorphan")
 		self.assertEqual(stock_entry.items[0].qty, 3)
-		stock_entry.from_warehouse = "Stores - _TC"
+		stock_entry.from_warehouse = "Farmacia - CFdP"
 		stock_entry.submit()
 
 		ipme.reload()
@@ -166,7 +166,7 @@ def make_stock_entry(warehouse=None):
 	stock_entry = frappe.new_doc("Stock Entry")
 	stock_entry.stock_entry_type = "Material Receipt"
 	stock_entry.company = "_Test Company"
-	stock_entry.to_warehouse = warehouse or "Stores - _TC"
+	stock_entry.to_warehouse = warehouse or "Farmacia - CFdP"
 	expense_account = get_account(None, "expense_account", "Healthcare Settings", "_Test Company")
 	se_child = stock_entry.append("items")
 	se_child.item_code = "Dextromethorphan"
@@ -174,7 +174,7 @@ def make_stock_entry(warehouse=None):
 	se_child.uom = "Nos"
 	se_child.stock_uom = "Nos"
 	se_child.qty = 6
-	se_child.t_warehouse = "Stores - _TC"
+	se_child.t_warehouse = "Farmacia - CFdP"
 	# in stock uom
 	se_child.conversion_factor = 1.0
 	se_child.expense_account = expense_account

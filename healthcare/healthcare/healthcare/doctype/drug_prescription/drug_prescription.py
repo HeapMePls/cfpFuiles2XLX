@@ -12,6 +12,8 @@ class DrugPrescription(Document):
 		quantity = 0
 		dosage = None
 		period = None
+		drug = None
+
 
 		if self.dosage:
 			dosage = frappe.get_doc("Prescription Dosage", self.dosage)

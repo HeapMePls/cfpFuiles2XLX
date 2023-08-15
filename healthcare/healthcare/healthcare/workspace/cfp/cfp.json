@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"xJDhIChpR5\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h1\\\">Casa Fuente del Prado</span>\",\"col\":12}},{\"id\":\"CLoJOH8_MO\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"e-FJYtVQBt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Registrar un Paciente\",\"col\":12}},{\"id\":\"AvoRZ64TCV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Programar Admisi\u00f3n\",\"col\":12}},{\"id\":\"VYcwX9IaUN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Historia del Paciente\",\"col\":12}},{\"id\":\"CbviT4pXKA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Notificaciones\",\"col\":12}},{\"id\":\"z0nF6Hnfb5\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"t0pJdPuKm0\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Hombres</span>\",\"col\":6}},{\"id\":\"_XUzevL2Mv\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Mujeres</span>\",\"col\":6}},{\"id\":\"UMBvKw6m2w\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Camas Reservadas \",\"col\":6}},{\"id\":\"8zJCmBHUMl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Camas Reservadas\",\"col\":6}},{\"id\":\"qTpw7kVrZn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes Internados   \",\"col\":6}},{\"id\":\"GNVPvhYsgF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes Internados\",\"col\":6}},{\"id\":\"6vIPr67g8R\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes en Alta Programada\",\"col\":6}},{\"id\":\"n-JoAt8v6G\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes en Alta Programada  \",\"col\":6}},{\"id\":\"Hx750Z4MHV\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"WzcfoYwezD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lista de pacientes\",\"col\":6}},{\"id\":\"vkOOxsnAdU\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lista de Pacientes\",\"col\":6}},{\"id\":\"pGVWYvpY4R\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"kco8kM0FYC\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Camas Disponibles</span>\",\"col\":12}},{\"id\":\"0ZHoNuPb-f\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hombres - Sector Adelante\",\"col\":6}},{\"id\":\"p76NsllMGN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mujeres - Sector Adelante\",\"col\":6}},{\"id\":\"tMZ5Blyjzp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hombres - Sector Atras\",\"col\":6}},{\"id\":\"lDvU6iv0Xt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mujeres - Sector Atras\",\"col\":6}},{\"id\":\"Y2dS1S__ZT\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"35nwh3IIvw\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"lkl5hbEjh_\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b><span class=\\\"h3\\\">Stock de Medicaci\u00f3n</span></b></span>\",\"col\":12}},{\"id\":\"5zMNQyiSCw\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Orden de Medicacion\",\"col\":12}},{\"id\":\"XYtsLy4bo_\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Validar medicaci\u00f3n\",\"col\":12}}]",
+ "content": "[{\"id\":\"xJDhIChpR5\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h1\\\">Casa Fuente del Prado</span>\",\"col\":12}},{\"id\":\"CLoJOH8_MO\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"e-FJYtVQBt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Registrar un Paciente\",\"col\":12}},{\"id\":\"AvoRZ64TCV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Programar Admisi\u00f3n\",\"col\":12}},{\"id\":\"VYcwX9IaUN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Historia del Paciente\",\"col\":12}},{\"id\":\"CbviT4pXKA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Notificaciones\",\"col\":12}},{\"id\":\"z0nF6Hnfb5\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"t0pJdPuKm0\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Hombres</span>\",\"col\":6}},{\"id\":\"_XUzevL2Mv\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Mujeres</span>\",\"col\":6}},{\"id\":\"UMBvKw6m2w\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Camas Reservadas \",\"col\":6}},{\"id\":\"8zJCmBHUMl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Camas Reservadas\",\"col\":6}},{\"id\":\"qTpw7kVrZn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes Internados   \",\"col\":6}},{\"id\":\"GNVPvhYsgF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes Internados\",\"col\":6}},{\"id\":\"6vIPr67g8R\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes en Alta Programada\",\"col\":6}},{\"id\":\"n-JoAt8v6G\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pacientes en Alta Programada  \",\"col\":6}},{\"id\":\"Hx750Z4MHV\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"WzcfoYwezD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lista de pacientes\",\"col\":6}},{\"id\":\"vkOOxsnAdU\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lista de Pacientes\",\"col\":6}},{\"id\":\"pGVWYvpY4R\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"kco8kM0FYC\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Camas Disponibles</span>\",\"col\":12}},{\"id\":\"0ZHoNuPb-f\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hombres - Sector Adelante\",\"col\":6}},{\"id\":\"p76NsllMGN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mujeres - Sector Adelante\",\"col\":6}},{\"id\":\"tMZ5Blyjzp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hombres - Sector Atras\",\"col\":6}},{\"id\":\"lDvU6iv0Xt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mujeres - Sector Atras\",\"col\":6}},{\"id\":\"Y2dS1S__ZT\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"35nwh3IIvw\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"lkl5hbEjh_\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b><span class=\\\"h3\\\">Stock de Medicaci\u00f3n</span></b></span>\",\"col\":12}},{\"id\":\"yeeLWXTdBE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cargar nuevos productos\",\"col\":6}},{\"id\":\"SYSBDL2tLD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lista de productos\",\"col\":6}},{\"id\":\"St87R3RG00\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cargar stock\",\"col\":12}},{\"id\":\"XYtsLy4bo_\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Validar medicaci\u00f3n\",\"col\":12}}]",
  "creation": "2020-03-02 17:23:17.919682",
  "custom_blocks": [],
  "docstatus": 0,
@@ -494,7 +494,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-08-08 09:42:14.516050",
+ "modified": "2023-08-11 15:12:32.303482",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "CFP",
@@ -612,12 +612,34 @@
    "type": "DocType"
   },
   {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "Cargar nuevos productos",
+   "link_to": "Item",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Cargar stock",
+   "link_to": "Stock Entry",
+   "type": "DocType"
+  },
+  {
    "color": "Pink",
    "doc_view": "List",
    "format": "{} Disponibles",
    "label": "Mujeres - Sector Atras",
    "link_to": "Healthcare Service Unit",
    "stats_filter": "{\"company\":[\"=\",\"Casa Fuente del Prado\"],\"occupancy_status\":[\"=\",\"Vacant\"],\"service_unit_type\":[\"=\",\"Mujeres - Sector Atras\"],\"is_group\":[\"=\",0]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "Cantidad:{} ",
+   "label": "Lista de productos",
+   "link_to": "Item",
    "type": "DocType"
   },
   {
@@ -642,13 +664,6 @@
    "label": "Historia del Paciente",
    "link_to": "patient_history",
    "type": "Page"
-  },
-  {
-   "color": "Blue",
-   "doc_view": "List",
-   "label": "Orden de Medicacion",
-   "link_to": "Inpatient Medication Order",
-   "type": "DocType"
   },
   {
    "doc_view": "List",

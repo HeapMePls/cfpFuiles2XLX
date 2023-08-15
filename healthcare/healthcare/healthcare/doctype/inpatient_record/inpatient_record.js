@@ -10,6 +10,8 @@ frappe.ui.form.on('Inpatient Record', {
     // Oculta el campo de fecha al cargar el formulario
     toggleDateField(false);
     toggleDateField2(false);
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
+    frm.fields_dict['medication_orders'].grid.wrapper.find('.grid-add-row').hide();
   },
 
   alergico: function(frm) {
@@ -36,7 +38,11 @@ frappe.ui.form.on('Inpatient Record', {
 		];
 	},
 
-  refresh: function(frm) {
+	refresh: function(frm) {
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
+    frm.fields_dict['medication_orders'].grid.wrapper.find('.grid-add-row').hide();
+    frm.events.show_medication_order_button(frm);
+
 		frm.set_query('admission_service_unit_type', function() {
 			return {
 				filters: {
@@ -65,7 +71,7 @@ frappe.ui.form.on('Inpatient Record', {
         create_observacion(frm);
       }, "Agregar");
     }
-    
+
    var create_observacion = function (frm) { 
     frappe.route_options = {
       "patient": frm.doc.patient_name,
@@ -100,13 +106,105 @@ frappe.ui.form.on('Inpatient Record', {
 			}
 		}
 
-  if (frappe.user.has_role('Physician')) {
+ /* if (frappe.user.has_role('Physician')) {
    frm.set_df_property('medication_order', 'hidden', 1);
-  }
+  }*/
+
+
+
 },
 
   btn_transfer: function(frm) {
     transfer_patient_dialog(frm);
+},
+show_medication_order_button: function(frm) {
+  frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
+  frm.fields_dict['drug_prescription'].grid.add_custom_button(__('Add Medication Orders'), () => {
+    let d = new frappe.ui.Dialog({
+      title: __('Add Medication Orders'),
+      fields: [
+        {
+          fieldname: 'start_date',
+          label: __('Start Date'),
+          fieldtype: 'Date',
+          default: frappe.datetime.get_today(),
+          reqd: 1,
+          onchange: () => {
+            // Actualizar el campo start_date en el Doctype al cambiar en el diálogo
+            frm.doc.start_date = d.get_value('start_date');
+            frm.refresh_field('start_date');
+            frappe.ui.form.save(frm.docname);
+
+          }
+        },
+        {
+          fieldname: 'drug_code',
+          label: __('Drug'),
+          fieldtype: 'Link',
+          options: 'Item',
+          reqd: 1,
+          "get_query": function () {
+            return {
+              filters: {'is_stock_item': 1}
+            };
+          }
+        },
+        {
+          fieldname: 'dosage',
+          label: __('Dosage'),
+          fieldtype: 'Link',
+          options: 'Prescription Dosage',
+          reqd: 1
+        },
+        {
+          fieldname: 'period',
+          label: __('Period'),
+          fieldtype: 'Link',
+          options: 'Prescription Duration',
+          reqd: 1
+        },
+        {
+          fieldname: 'dosage_form',
+          label: __('Dosage Form'),
+          fieldtype: 'Link',
+          options: 'Item Group',
+          reqd: 1
+        }
+      ],
+      primary_action_label: __('Add'),
+      primary_action: () => {
+        let values = d.get_values();
+        if (values) {
+          d.hide();
+          frm.add_child('drug_prescription', {
+            drug_code: values.drug_code, // Reemplaza field1 con los nombres de tus campos
+            drug_name: values.drug_name,
+            dosage: values.dosage,
+            period: values.period,
+            dosage_form: values.dosage_form,
+          });
+
+          frm.refresh_field('drug_prescription');
+          console.log('Dialog Values:', values); // Agrega este console.log para verificar los valores
+
+          frm.call({
+            doc: frm.doc,
+            method: 'add_order_entries',
+            args: {
+              order: values
+            },
+            freeze: true,
+            freeze_message: __('Adding Order Entries'),
+            callback: function() {
+              frm.refresh_field('medication_orders');
+
+            }
+          });
+        }
+      },
+    });
+    d.show();
+  });
 },
 
   /*validate: async function(frm) {
@@ -291,9 +389,19 @@ let admit_patient_dialog = function(frm) {
 				callback: function(data) {
           if (!data.exc) {
             frm.reload_doc();
-            frappe.msgprint(__("No olvides cargar los campos Motivo de Ingreso y Diagnóstico."));
-          }
-        },
+            console.log('holaa3333333')
+            const chiefComplaintIsEmpty = !frm.doc.mignreso;
+            const diagnosisIsEmpty = !frm.doc.diagnostico_principal;
+
+            if (chiefComplaintIsEmpty && diagnosisIsEmpty) {
+                frappe.msgprint(__("Por favor, asegúrate de completar los campos Motivo de Ingreso y Diagnóstico."));
+            } else if (chiefComplaintIsEmpty) {
+                frappe.msgprint(__("No olvides cargar el campo Motivo de Ingreso."));
+            } else if (diagnosisIsEmpty) {
+                frappe.msgprint(__("No olvides cargar el campo Diagnóstico."));
+            }
+        }
+      },
 				freeze: true,
 				freeze_message: __('Admitiendo Paciente')
 			});

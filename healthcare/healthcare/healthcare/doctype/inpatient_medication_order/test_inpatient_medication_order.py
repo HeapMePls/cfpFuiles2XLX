@@ -153,7 +153,7 @@ def create_ipme(filters, update_stock=0):
 	ipme.posting_date = getdate()
 	ipme.update_stock = update_stock
 	if update_stock:
-		ipme.warehouse = "Stores - _TC"
+		ipme.warehouse = "Farmacia - CFdP"
 	for key, value in filters.items():
 		ipme.set(key, value)
 	ipme = ipme.get_medication_orders()

@@ -40,13 +40,13 @@ class InpatientMedicationOrder(Document):
 				"name": ("!=", self.name),
 			},
 		)
-		if existing_mo:
-			frappe.throw(
-				_("An Inpatient Medication Order {0} against Patient Encounter {1} already exists.").format(
-					existing_mo, self.patient_encounter
-				),
-				frappe.DuplicateEntryError,
-			)
+		#if existing_mo:
+		#	frappe.throw(
+		#		_("An Inpatient Medication Order {0} against Patient Encounter {1} already exists.").format(
+		#			existing_mo, self.patient_encounter
+		#		),
+		#		frappe.DuplicateEntryError,
+		#	)
 
 	def set_total_orders(self):
 		self.db_set("total_orders", len(self.medication_orders))

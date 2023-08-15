@@ -110,7 +110,7 @@ class InpatientMedicationEntry(Document):
 
 		# update status and completed orders count
 		for order, count in order_entry_map.items():
-			medication_order = frappe.get_doc("Inpatient Medication Order", order)
+			medication_orders = frappe.get_doc("Inpatient Medication Order", order)
 			completed_orders = flt(count)
 			current_value = frappe.db.get_value("Inpatient Medication Order", order, "completed_orders")
 
@@ -119,8 +119,8 @@ class InpatientMedicationEntry(Document):
 			else:
 				completed_orders = flt(current_value) + flt(count)
 
-			medication_order.db_set("completed_orders", completed_orders)
-			medication_order.set_status()
+			medication_orders.db_set("completed_orders", completed_orders)
+			medication_orders.set_status()
 
 	def get_order_entry_map(self):
 		# for marking order completion status

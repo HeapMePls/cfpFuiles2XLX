@@ -55,7 +55,7 @@ frappe.ui.form.on('Inpatient Medication Order', {
 						fieldname: 'dosage_form',
 						label: __('Dosage Form'),
 						fieldtype: 'Link',
-						options: 'Dosage Form',
+						options: 'Item Group',
 						reqd: 1
 					}
 				],

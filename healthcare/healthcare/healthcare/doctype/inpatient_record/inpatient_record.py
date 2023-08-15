@@ -14,12 +14,35 @@ from frappe.utils import get_datetime, get_link_to_form, getdate, now_datetime, 
 from healthcare.healthcare.doctype.nursing_task.nursing_task import NursingTask
 from healthcare.healthcare.utils import validate_nursing_tasks
 import random
-
+from healthcare.healthcare.doctype.patient_encounter.patient_encounter import (
+	get_prescription_dates,
+)
 #from frappe.utils import add_to_date
 #from frappe import enqueue
 
 
 class InpatientRecord(Document):
+	@frappe.whitelist()
+	def add_order_entries(self, order):
+		#inpatient_record = frappe.get_doc("Inpatient Record", inpatient_record)
+		#inpatient_record.start_date = start_date
+
+
+		if order.get("drug_code"):
+			dosage = frappe.get_doc("Prescription Dosage", order.get("dosage"))
+			dates = get_prescription_dates(order.get("period"), self.start_date)
+			for date in dates:
+				for dose in dosage.dosage_strength:
+					entry = self.append("medication_orders")
+					entry.drug = order.get("drug_code")
+					entry.drug_name = frappe.db.get_value("Item", order.get("drug_code"), "item_name")
+					entry.dosage = dose.strength
+					entry.dosage_form = order.get("dosage_form")
+					entry.date = date
+					entry.time = dose.strength_time
+			self.end_date = dates[-1]
+		return
+
 	def after_insert(self):
 		frappe.db.set_value("Patient", self.patient, "inpatient_record", self.name)
 		frappe.db.set_value("Patient", self.patient, "inpatient_status", self.status)
@@ -48,6 +71,10 @@ class InpatientRecord(Document):
 				primer_diagnostico = self.diagnosis[0].diagnosis
 				# Guardar el primer valor en el campo "diagnostico_principal"
 				self.diagnostico_principal = primer_diagnostico
+
+		if self.chief_complaint:
+				primer_motivo = self.chief_complaint[0].chief_complaint
+				self.mingreso = primer_motivo
 
 	def save_patient_observations(self):
 		if not self.observaciones_ or not len(self.observaciones_) or not self.registro_médico or not len(self.registro_médico):
@@ -92,6 +119,38 @@ class InpatientRecord(Document):
 
 
 
+	def on_update(self):
+			self.save_patient_medication()
+
+	def save_patient_medication(self):
+		if not self.medication_orders or not len(self.medication_orders):
+				return
+
+		old_medication= list(map(lambda x: x.as_dict(), self.get_doc_before_save().medication_orders))
+		new_medication = list(map(lambda x: x.as_dict(), self.medication_orders))
+
+		for obs in old_medication:
+				obs.modified = ""
+
+		for obs in new_medication:
+				obs.modified = ""
+
+		old_medication = json.dumps(old_medication, sort_keys=True, default=str)
+		new_medication = json.dumps(new_medication, sort_keys=True, default=str)
+
+		if old_medication != new_medication:
+				medication_ordersdoc = frappe.new_doc("Inpatient Medication Order")
+				medication_ordersdoc.patient = self.patient
+				medication_ordersdoc.start_date = self.start_date
+				medication_ordersdoc.company = self.company
+				medication_ordersdoc.medication_orders= self.medication_orders.copy()  # Aquí corregimos para que use registro_médico
+				medication_ordersdoc.save()
+				medication_ordersdoc.submit()
+
+	##ACA HAY QUE CAMBIAR EL LADO DERECHO O IZQUIERDO Y POERLE medical_orders
+
+
+
 #				for observaciones_ in self.observaciones_:
 #						observaciones_doc.append("registro_medico", {
 #								"observacion": observaciones_.observacion,
@@ -104,13 +163,21 @@ class InpatientRecord(Document):
 #				observaciones_doc.insert(ignore_permissions=True)
 #				observaciones_doc.submit()
 
-	def validate(self):
-		self.validate_dates()
-		self.validate_already_scheduled_or_admitted()
-		if self.status in ["Discharged", "Cancelled"]:
-			frappe.db.set_value(
-				"Patient", self.patient, {"inpatient_status": None, "inpatient_record": None}
-			)
+
+
+	#def validate(self):
+	#	for prescription in self.drug_prescription:
+	#		self.append("medication_orders", {
+	#			"drug_code": prescription.drug,
+	#			})
+
+	#	self.validate_dates()
+	#	self.validate_already_scheduled_or_admitted()
+
+	#	if self.status in ["Discharged", "Cancelled"]:
+	#			frappe.db.set_value(
+	#					"Patient", self.patient, {"inpatient_status": None, "inpatient_record": None}
+	#			)
 
 	def validate_dates(self):
 		if (getdate(self.expected_discharge) < getdate(self.scheduled_date)) or (
@@ -148,6 +215,9 @@ class InpatientRecord(Document):
 	@frappe.whitelist()
 	def admit(self, service_unit, check_in, primary_practitioner, orden_medica, indicaciones_al_ingreso, expected_discharge=None):
 		admit_patient(self, service_unit, check_in, primary_practitioner, orden_medica, indicaciones_al_ingreso,expected_discharge)
+	
+
+
 
 	@frappe.whitelist()
 	def discharge(self):
@@ -274,45 +344,45 @@ def check_out_inpatient(inpatient_record):
 def discharge_patient(inpatient_record):
 		# Utiliza los valores pasados como argumentos en lugar de variables no definidas
 		validate_nursing_tasks(inpatient_record)
-		validate_inpatient_invoicing(inpatient_record)
+#		validate_inpatient_invoicing(inpatient_record)
 
 		inpatient_record.discharge_datetime = now_datetime()
 		inpatient_record.status = "Discharged"
 		inpatient_record.save(ignore_permissions=True)
 
 
-def validate_inpatient_invoicing(inpatient_record):
-	if frappe.db.get_single_value("Healthcare Settings", "allow_discharge_despite_unbilled_services"):
-		return
+#def validate_inpatient_invoicing(inpatient_record):
+#	if frappe.db.get_single_value("Healthcare Settings", "allow_discharge_despite_unbilled_services"):
+#		return
 
-	pending_invoices = get_pending_invoices(inpatient_record)
+#	pending_invoices = get_pending_invoices(inpatient_record)
 
-	if pending_invoices:
-		message = _("Cannot mark Inpatient Record as Discharged since there are unbilled services. ")
+#	if pending_invoices:
+#		message = _("Cannot mark Inpatient Record as Discharged since there are unbilled services. ")
 
-		formatted_doc_rows = ""
+#		formatted_doc_rows = ""
 
-		for doctype, docnames in pending_invoices.items():
-			formatted_doc_rows += """
-				<td>{0}</td>
-				<td>{1}</td>
-			</tr>""".format(
-				doctype, docnames
-			)
+#		for doctype, docnames in pending_invoices.items():
+#			formatted_doc_rows += """
+#				<td>{0}</td>
+#				<td>{1}</td>
+#			</tr>""".format(
+#				doctype, docnames
+#			)
 
-		message += """
-			<table class='table'>
-				<thead>
-					<th>{0}</th>
-					<th>{1}</th>
-				</thead>
-				{2}
-			</table>
-		""".format(
-			_("Healthcare Service"), _("Documents"), formatted_doc_rows
-		)
+#		message += """
+#			<table class='table'>
+#				<thead>
+#					<th>{0}</th>
+#					<th>{1}</th>
+#				</thead>
+#				{2}
+#			</table>
+#		""".format(
+#			_("Healthcare Service"), _("Documents"), formatted_doc_rows
+#		)
 
-		frappe.throw(message, title=_("Unbilled Services"), is_minimizable=True, wide=True)
+#		frappe.throw(message, title=_("Unbilled Services"), is_minimizable=True, wide=True)
 
 
 def get_pending_invoices(inpatient_record):

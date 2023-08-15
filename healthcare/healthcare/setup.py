@@ -530,26 +530,26 @@ def create_dosage():
 		},
 		{
 			"doctype": "Prescription Dosage",
-			"name": "0-0-20",
-			"dosage": "0-0-20",
+			"name": "0-0-1",
+			"dosage": "0-0-1",
 			"dosage_strength": [{"strength": "1.0", "strength_time": "20:00:00"}],
 		},
 		{
 			"doctype": "Prescription Dosage",
-			"name": "8-0-0",
-			"dosage": "8-0-0",
+			"name": "1-0-0",
+			"dosage": "1-0-0",
 			"dosage_strength": [{"strength": "1.0", "strength_time": "8:00:00"}],
 		},
 		{
 			"doctype": "Prescription Dosage",
-			"name": "0-14-0",
-			"dosage": "0-14-0",
+			"name": "0-1-0",
+			"dosage": "0-1-0",
 			"dosage_strength": [{"strength": "1.0", "strength_time": "14:00:00"}],
 		},
 		{
 			"doctype": "Prescription Dosage",
-			"name": "8-14-20",
-			"dosage": "8-14-20",
+			"name": "1-1-1",
+			"dosage": "1-1-1",
 			"dosage_strength": [
 				{"strength": "1.0", "strength_time": "8:00:00"},
 				{"strength": "1.0", "strength_time": "14:00:00"},
@@ -558,8 +558,8 @@ def create_dosage():
 		},
 		{
 			"doctype": "Prescription Dosage",
-			"name": "8-0-20",
-			"dosage": "8-0-20",
+			"name": "1-0-1",
+			"dosage": "1-0-1",
 			"dosage_strength": [
 				{"strength": "1.0", "strength_time": "8:00:00"},
 				{"strength": "1.0", "strength_time": "20:00:00"},
@@ -567,8 +567,8 @@ def create_dosage():
 		},
 		{
 			"doctype": "Prescription Dosage",
-			"name": "0-14-20",
-			"dosage": "0-14-20",
+			"name": "0-1-1",
+			"dosage": "0-1-1",
 			"dosage_strength": [
 				{"strength": "1.0", "strength_time": "14:00:00"},
 				{"strength": "1.0", "strength_time": "20:00:00"},
@@ -576,8 +576,8 @@ def create_dosage():
 		},
 		{
 			"doctype": "Prescription Dosage",
-			"name": "8-14-0",
-			"dosage": "8-14-0",
+			"name": "1-1-0",
+			"dosage": "1-1-0",
 			"dosage_strength": [
 				{"strength": "1.0", "strength_time": "8:00:00"},
 				{"strength": "1.0", "strength_time": "14:00:00"},
