@@ -13,6 +13,55 @@ from healthcare.healthcare.utils import get_medical_codes
 
 
 class PatientEncounter(Document):
+	@frappe.whitelist()
+	def add_order_entries(self, order):
+		#inpatient_record = frappe.get_doc("Inpatient Record", inpatient_record)
+		#inpatient_record.start_date = start_date
+
+
+		if order.get("drug_code"):
+			dosage = frappe.get_doc("Prescription Dosage", order.get("dosage"))
+			dates = get_prescription_dates(order.get("period"), self.start_date)
+			for date in dates:
+				for dose in dosage.dosage_strength:
+					entry = self.append("medication_orders")
+					entry.drug = order.get("drug_code")
+					entry.drug_name = frappe.db.get_value("Item", order.get("drug_code"), "item_name")
+					entry.dosage = dose.strength
+					entry.dosage_form = order.get("dosage_form")
+					entry.date = date
+					entry.time = dose.strength_time
+			self.end_date = dates[-1]
+		return
+
+	def on_update(self):
+			self.save_patient_medication()
+
+	def save_patient_medication(self):
+		if not self.medication_orders or not len(self.medication_orders):
+				return
+
+		old_medication= list(map(lambda x: x.as_dict(), self.get_doc_before_save().medication_orders))
+		new_medication = list(map(lambda x: x.as_dict(), self.medication_orders))
+
+		for obs in old_medication:
+				obs.modified = ""
+
+		for obs in new_medication:
+				obs.modified = ""
+
+		old_medication = json.dumps(old_medication, sort_keys=True, default=str)
+		new_medication = json.dumps(new_medication, sort_keys=True, default=str)
+
+		if old_medication != new_medication:
+				medication_ordersdoc = frappe.new_doc("Inpatient Medication Order")
+				medication_ordersdoc.patient = self.patient
+				medication_ordersdoc.start_date = self.start_date
+				medication_ordersdoc.company = self.company
+				medication_ordersdoc.medication_orders= self.medication_orders.copy()  # Aquí corregimos para que use registro_médico
+				medication_ordersdoc.save()
+				medication_ordersdoc.submit()
+				
 	def validate(self):
 		self.set_title()
 		validate_codification_table(self)

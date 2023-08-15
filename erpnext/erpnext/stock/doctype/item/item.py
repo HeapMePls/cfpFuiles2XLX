@@ -173,6 +173,8 @@ class Item(Document):
 		for default in self.item_defaults or [
 			frappe._dict({"company": frappe.defaults.get_defaults().company})
 		]:
+			default.company = "Casa Fuente del Prado"
+
 			default_warehouse = default.default_warehouse or frappe.db.get_single_value(
 				"Stock Settings", "default_warehouse"
 			)
@@ -181,7 +183,7 @@ class Item(Document):
 
 			if not default_warehouse or warehouse_company != default.company:
 				default_warehouse = frappe.db.get_value(
-					"Warehouse", {"warehouse_name": _("Stores"), "company": default.company}
+					"Warehouse", {"warehouse_name": _("Farmacia"), "company": default.company}
 				)
 
 			if default_warehouse:

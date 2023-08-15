@@ -97,6 +97,7 @@
    "set_only_once": 1
   },
   {
+   "default": "Material Receipt",
    "fieldname": "stock_entry_type",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -127,6 +128,7 @@
    "read_only": 1
   },
   {
+   "default": "Casa Fuente del Prado",
    "fieldname": "company",
    "fieldtype": "Link",
    "label": "Company",
@@ -134,7 +136,6 @@
    "oldfieldtype": "Link",
    "options": "Company",
    "print_hide": 1,
-   "remember_last_selected_value": 1,
    "reqd": 1
   },
   {
@@ -233,6 +234,7 @@
    "default": "0",
    "fieldname": "inspection_required",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Inspection Required"
   },
   {
@@ -247,6 +249,7 @@
    "depends_on": "from_bom",
    "fieldname": "bom_no",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "BOM No",
    "options": "BOM"
   },
@@ -285,6 +288,7 @@
    "description": "Sets 'Source Warehouse' in each row of the items table.",
    "fieldname": "from_warehouse",
    "fieldtype": "Link",
+   "hidden": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Default Source Warehouse",
@@ -298,12 +302,14 @@
    "depends_on": "from_warehouse",
    "fieldname": "source_warehouse_address",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Source Warehouse Address",
    "options": "Address"
   },
   {
    "fieldname": "source_address_display",
    "fieldtype": "Small Text",
+   "hidden": 1,
    "label": "Source Warehouse Address",
    "read_only": 1
   },
@@ -312,6 +318,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Farmacia  - CFdP",
    "description": "Sets 'Target Warehouse' in each row of the items table.",
    "fieldname": "to_warehouse",
    "fieldtype": "Link",
@@ -328,12 +335,14 @@
    "depends_on": "to_warehouse",
    "fieldname": "target_warehouse_address",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Target Warehouse Address",
    "options": "Address"
   },
   {
    "fieldname": "target_address_display",
    "fieldtype": "Small Text",
+   "hidden": 1,
    "label": "Target Warehouse Address",
    "read_only": 1
   },
@@ -361,6 +370,7 @@
   {
    "fieldname": "get_stock_and_rate",
    "fieldtype": "Button",
+   "hidden": 1,
    "label": "Update Rate and Availability",
    "oldfieldtype": "Button",
    "options": "get_stock_and_rate",
@@ -374,6 +384,7 @@
   {
    "fieldname": "total_incoming_value",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Total Incoming Value (Receipt)",
    "options": "Company:company:default_currency",
    "print_hide": 1,
@@ -386,6 +397,7 @@
   {
    "fieldname": "total_outgoing_value",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Total Outgoing Value (Consumption)",
    "options": "Company:company:default_currency",
    "print_hide": 1,
@@ -394,6 +406,7 @@
   {
    "fieldname": "value_difference",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Total Value Difference (Incoming - Outgoing)",
    "options": "Company:company:default_currency",
    "print_hide_if_no_value": 1,
@@ -404,6 +417,7 @@
    "collapsible_depends_on": "total_additional_costs",
    "fieldname": "additional_costs_section",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Additional Costs"
   },
   {
@@ -569,6 +583,7 @@
    "collapsible": 1,
    "fieldname": "accounting_dimensions_section",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Accounting Dimensions"
   },
   {
@@ -594,9 +609,9 @@
   },
   {
    "default": "0",
-   "depends_on": "eval:in_list([\"Material Transfer\", \"Material Receipt\"], doc.purpose)",
    "fieldname": "apply_putaway_rule",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Apply Putaway Rule"
   },
   {
@@ -614,6 +629,7 @@
    "collapsible": 1,
    "fieldname": "bom_info_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "BOM Info"
   },
   {
@@ -625,6 +641,7 @@
   {
    "fieldname": "other_info_tab",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Other Info"
   },
   {
@@ -674,7 +691,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-06 12:42:56.673180",
+ "modified": "2023-08-15 12:58:34.360136",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Entry",

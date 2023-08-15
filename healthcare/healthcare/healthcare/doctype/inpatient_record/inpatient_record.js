@@ -14,11 +14,22 @@ frappe.ui.form.on('Inpatient Record', {
     frm.fields_dict['medication_orders'].grid.wrapper.find('.grid-add-row').hide();
   },
 
+  drug_prescription : function(frm){
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
+    frm.fields_dict['medication_orders'].grid.wrapper.find('.grid-add-row').hide();
+
+  },
+  medication_orders: function(frm) {
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
+    frm.fields_dict['medication_orders'].grid.wrapper.find('.grid-add-row').hide();
+
+  },
+
   alergico: function(frm) {
     // Obtiene el valor actual del campo de verificación
     var checkField = frm.doc.alergico;
     // Muestra u oculta el campo de fecha según el valor del campo de verificación
-    toggleDateField(checkField);
+    toggleDateField(frm, checkField);
   },
 
   diabetes: function(frm) {
@@ -32,9 +43,16 @@ frappe.ui.form.on('Inpatient Record', {
 	setup: function(frm) {
 		frm.get_field('drug_prescription').grid.editable_fields = [
 			{fieldname: 'drug_code', columns: 2},
-			{fieldname: 'drug_name', columns: 2},
+			{fieldname: 'dosage_form', columns: 2},
 			{fieldname: 'dosage', columns: 2},
 			{fieldname: 'period', columns: 2}
+		];
+    frm.get_field('medication_orders').grid.editable_fields = [
+			{fieldname: 'drug', columns: 2},
+      {fieldname: 'dosage_form', columns: 2},
+			{fieldname: 'date', columns: 2},
+			{fieldname: 'time', columns: 2},
+      {fieldname: 'medicacion_entregada', columns: 2}
 		];
 	},
 
@@ -119,9 +137,9 @@ frappe.ui.form.on('Inpatient Record', {
 },
 show_medication_order_button: function(frm) {
   frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
-  frm.fields_dict['drug_prescription'].grid.add_custom_button(__('Add Medication Orders'), () => {
+  frm.fields_dict['drug_prescription'].grid.add_custom_button(__('Agregar orden de medicación'), () => {
     let d = new frappe.ui.Dialog({
-      title: __('Add Medication Orders'),
+      title: __('Agregar oden de medicación'),
       fields: [
         {
           fieldname: 'start_date',
@@ -666,5 +684,4 @@ let cancel_ip_order = function(frm) {
 		});
 	}, __('Motivo de Cancelación'), __('Enviar'));
 }
-
 

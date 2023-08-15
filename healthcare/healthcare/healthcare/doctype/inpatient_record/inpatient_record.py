@@ -145,7 +145,7 @@ class InpatientRecord(Document):
 				medication_ordersdoc.company = self.company
 				medication_ordersdoc.medication_orders= self.medication_orders.copy()  # Aquí corregimos para que use registro_médico
 				medication_ordersdoc.save()
-				medication_ordersdoc.submit()
+				#medication_ordersdoc.submit()
 
 	##ACA HAY QUE CAMBIAR EL LADO DERECHO O IZQUIERDO Y POERLE medical_orders
 
@@ -267,6 +267,9 @@ def schedule_inpatient(args):
 
 	if encounter and encounter.drug_prescription:  # Medication
 		set_ip_child_records(inpatient_record, "drug_prescription", encounter.drug_prescription)
+
+	if encounter and encounter.medication_orders:  # Medication
+		set_ip_child_records(inpatient_record, "medication_orders", encounter.medication_orders)
 
 	if encounter and encounter.lab_test_prescription:  # Lab Tests
 		set_ip_child_records(inpatient_record, "lab_test_prescription", encounter.lab_test_prescription)

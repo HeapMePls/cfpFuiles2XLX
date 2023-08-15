@@ -51,7 +51,7 @@ frappe.ui.form.on("Item", {
 	},
 
 	refresh: function(frm) {
-		if (frm.doc.is_stock_item) {
+		if (frm.doc.is_stock_item && frappe.user.has_role('Administrator')) {
 			frm.add_custom_button(__("Stock Balance"), function() {
 				frappe.route_options = {
 					"item_code": frm.doc.name
@@ -121,8 +121,12 @@ frappe.ui.form.on("Item", {
 		} else {
 			erpnext.toggle_naming_series();
 		}
+    if (!frm.doc.is_fixed_asset) {
+      erpnext.item.make_dashboard(frm);
+    }
 
-		if (!frm.doc.published_in_website) {
+    if(frappe.user.has_role('Administrator')){
+		if (!frm.doc.published_in_website ) {
 			frm.add_custom_button(__("Publish in Website"), function() {
 				frappe.call({
 					method: "erpnext.e_commerce.doctype.website_item.website_item.make_website_item",
@@ -151,13 +155,11 @@ frappe.ui.form.on("Item", {
 				});
 			}, __("View"));
 		}
-
+    
 		erpnext.item.edit_prices_button(frm);
 		erpnext.item.toggle_attributes(frm);
 
-		if (!frm.doc.is_fixed_asset) {
-			erpnext.item.make_dashboard(frm);
-		}
+
 
 		frm.add_custom_button(__('Duplicate'), function() {
 			var new_item = frappe.model.copy_doc(frm.doc);
@@ -170,6 +172,7 @@ frappe.ui.form.on("Item", {
 			}
 			frappe.set_route('Form', 'Item', new_item.name);
 		});
+  }
 
 		const stock_exists = (frm.doc.__onload
 			&& frm.doc.__onload.stock_exists) ? 1 : 0;
@@ -437,6 +440,9 @@ $.extend(erpnext.item, {
 			});
 		}
 	},
+
+
+
 
 	edit_prices_button: function(frm) {
 		frm.add_custom_button(__("Add / Edit Prices"), function() {

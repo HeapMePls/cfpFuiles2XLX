@@ -199,7 +199,7 @@ erpnext.stock.ItemDashboard = class ItemDashboard {
 	}
 };
 
-erpnext.stock.move_item = function (item, source, target, actual_qty, rate, callback) {
+erpnext.stock.move_item = function (item, source, target, actual_qty, callback) {
 	var dialog = new frappe.ui.Dialog({
 		title: target ? __('Add Item') : __('Move Item'),
 		fields: [{
@@ -255,11 +255,11 @@ erpnext.stock.move_item = function (item, source, target, actual_qty, rate, call
 		dialog.get_field('source').refresh();
 	}
 
-	if (rate) {
+	/*if (rate) {
 		dialog.get_field('rate').set_value(rate);
 		dialog.get_field('rate').df.hidden = 0;
 		dialog.get_field('rate').refresh();
-	}
+	}*/
 
 	if (target) {
 		dialog.get_field('target').df.read_only = 1;
@@ -290,7 +290,7 @@ erpnext.stock.move_item = function (item, source, target, actual_qty, rate, call
 			row.qty = dialog.get_value('qty');
 			row.conversion_factor = 1;
 			row.transfer_qty = dialog.get_value('qty');
-			row.basic_rate = dialog.get_value('rate');
+			//row.basic_rate = dialog.get_value('rate');
 			frappe.set_route('Form', doc.doctype, doc.name);
 		});
 	});

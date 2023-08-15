@@ -64,12 +64,8 @@ def execute(filters=None):
 		data.append(
 			[
 				item.name,
-				item.item_name,
-				item.description,
 				item.item_group,
-				item.brand,
 				bin.warehouse,
-				item.stock_uom,
 				bin.actual_qty,
 				bin.planned_qty,
 				bin.indented_qty,
@@ -95,84 +91,85 @@ def execute(filters=None):
 
 def get_columns():
 	return [
-		{
-			"label": _("Item Code"),
-			"fieldname": "item_code",
-			"fieldtype": "Link",
-			"options": "Item",
-			"width": 140,
-		},
-		{"label": _("Item Name"), "fieldname": "item_name", "width": 100},
-		{"label": _("Description"), "fieldname": "description", "width": 200},
+		#{
+		#	"label": _("Item Code"),
+		#	"fieldname": "item_code",
+		#	"fieldtype": "Link",
+		#	"options": "Item",
+		#	"width": 140,
+		#},
+		{"label": _("Item Name"), "fieldname": "item_name", "width": 300},
+	#	{"label": _("Description"), "fieldname": "description", "width": 200},
 		{
 			"label": _("Item Group"),
 			"fieldname": "item_group",
 			"fieldtype": "Link",
 			"options": "Item Group",
-			"width": 100,
+			"width": 300,
 		},
-		{
-			"label": _("Brand"),
-			"fieldname": "brand",
-			"fieldtype": "Link",
-			"options": "Brand",
-			"width": 100,
-		},
+		#{
+	#		"label": _("Brand"),
+	#		"fieldname": "brand",
+	#		"fieldtype": "Link",
+	#		"options": "Brand",
+	#		"width": 100,
+	#	},
 		{
 			"label": _("Warehouse"),
 			"fieldname": "warehouse",
 			"fieldtype": "Link",
 			"options": "Warehouse",
-			"width": 120,
+			"width": 320,
 		},
-		{
-			"label": _("UOM"),
-			"fieldname": "stock_uom",
-			"fieldtype": "Link",
-			"options": "UOM",
-			"width": 100,
-		},
+		#{
+		#	"label": _("UOM"),
+		#	"fieldname": "stock_uom",
+		#	"fieldtype": "Link",
+		#	"options": "UOM",
+		#	"width": 100,
+		#},
 		{
 			"label": _("Actual Qty"),
 			"fieldname": "actual_qty",
 			"fieldtype": "Float",
-			"width": 100,
+			"width": 300,
 			"convertible": "qty",
 		},
-		{
-			"label": _("Planned Qty"),
-			"fieldname": "planned_qty",
-			"fieldtype": "Float",
-			"width": 100,
-			"convertible": "qty",
-		},
-		{
-			"label": _("Requested Qty"),
-			"fieldname": "indented_qty",
-			"fieldtype": "Float",
-			"width": 110,
-			"convertible": "qty",
-		},
-		{
-			"label": _("Ordered Qty"),
-			"fieldname": "ordered_qty",
-			"fieldtype": "Float",
-			"width": 100,
-			"convertible": "qty",
-		},
-		{
-			"label": _("Reserved Qty"),
-			"fieldname": "reserved_qty",
-			"fieldtype": "Float",
-			"width": 100,
-			"convertible": "qty",
-		},
+		#{
+		#	"label": _("Planned Qty"),
+		#	"fieldname": "planned_qty",
+		#	"fieldtype": "Float",
+		#	"width": 100,
+		#	"convertible": "qty",
+		#},
+		#{
+		#	"label": _("Requested Qty"),
+		#	"fieldname": "indented_qty",
+		#	"fieldtype": "Float",
+		#	"width": 110,
+		#	"convertible": "qty",
+		#},
+		#{
+		#	"label": _("Ordered Qty"),
+		#	"fieldname": "ordered_qty",
+		#	"fieldtype": "Float",
+		#	"width": 100,
+		#	"convertible": "qty",
+		#},
+		#{
+		#	"label": _("Reserved Qty"),
+		#	"fieldname": "reserved_qty",
+		#	"fieldtype": "Float",
+		#	"width": 100,
+		#	"convertible": "qty",
+		#},
 		{
 			"label": _("Reserved for Production"),
 			"fieldname": "reserved_qty_for_production",
 			"fieldtype": "Float",
 			"width": 100,
 			"convertible": "qty",
+      "hidden":1,
 		},
 		{
 			"label": _("Reserved for Production Plan"),
@@ -180,6 +177,7 @@ def get_columns():
 			"fieldtype": "Float",
 			"width": 100,
 			"convertible": "qty",
+			"hidden":1,
 		},
 		{
 			"label": _("Reserved for Sub Contracting"),
@@ -187,6 +185,8 @@ def get_columns():
 			"fieldtype": "Float",
 			"width": 100,
 			"convertible": "qty",
+			"hidden":1,
+
 		},
 		{
 			"label": _("Reserved for POS Transactions"),
@@ -194,6 +194,7 @@ def get_columns():
 			"fieldtype": "Float",
 			"width": 100,
 			"convertible": "qty",
+			"hidden":1,
 		},
 		{
 			"label": _("Projected Qty"),
@@ -201,6 +202,7 @@ def get_columns():
 			"fieldtype": "Float",
 			"width": 100,
 			"convertible": "qty",
+			"hidden":1,
 		},
 		{
 			"label": _("Reorder Level"),
@@ -208,6 +210,7 @@ def get_columns():
 			"fieldtype": "Float",
 			"width": 100,
 			"convertible": "qty",
+			"hidden":1,
 		},
 		{
 			"label": _("Reorder Qty"),
@@ -215,6 +218,7 @@ def get_columns():
 			"fieldtype": "Float",
 			"width": 100,
 			"convertible": "qty",
+			"hidden":1,
 		},
 		{
 			"label": _("Shortage Qty"),
@@ -222,6 +226,7 @@ def get_columns():
 			"fieldtype": "Float",
 			"width": 100,
 			"convertible": "qty",
+			"hidden":1,
 		},
 	]
 

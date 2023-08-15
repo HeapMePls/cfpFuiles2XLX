@@ -8,20 +8,14 @@ frappe.query_reports["Stock Projected Qty"] = {
 			"label": __("Company"),
 			"fieldtype": "Link",
 			"options": "Company",
-			"default": frappe.defaults.get_user_default("Company")
+			"default": "Casa Fuente del Prado"
 		},
 		{
 			"fieldname":"warehouse",
 			"label": __("Warehouse"),
 			"fieldtype": "Link",
 			"options": "Warehouse",
-			"get_query": () => {
-				return {
-					filters: {
-						company: frappe.query_report.get_filter_value('company')
-					}
-				}
-			}
+			"default": "Farmacia  - CFdP"
 		},
 		{
 			"fieldname":"item_code",
@@ -40,7 +34,7 @@ frappe.query_reports["Stock Projected Qty"] = {
 			"fieldtype": "Link",
 			"options": "Item Group"
 		},
-		{
+		/*{
 			"fieldname":"brand",
 			"label": __("Brand"),
 			"fieldtype": "Link",
@@ -51,6 +45,6 @@ frappe.query_reports["Stock Projected Qty"] = {
 			"label": __("Include UOM"),
 			"fieldtype": "Link",
 			"options": "UOM"
-		}
+		}*/
 	]
 }

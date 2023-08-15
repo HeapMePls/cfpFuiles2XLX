@@ -122,11 +122,13 @@
   {
    "fieldname": "from_time",
    "fieldtype": "Time",
+   "hidden": 1,
    "label": "From Time"
   },
   {
    "fieldname": "to_time",
    "fieldtype": "Time",
+   "hidden": 1,
    "label": "To Time"
   },
   {
@@ -180,7 +182,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
+<<<<<<< Updated upstream
  "modified": "2023-08-14 17:27:43.720682",
+=======
+ "modified": "2023-08-15 11:29:31.465306",
+>>>>>>> Stashed changes
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Inpatient Medication Entry",

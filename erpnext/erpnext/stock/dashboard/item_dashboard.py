@@ -42,7 +42,7 @@ def get_data(
 			"reserved_qty_for_production",
 			"reserved_qty_for_sub_contract",
 			"actual_qty",
-			"valuation_rate",
+			#"valuation_rate",
 		],
 		or_filters={
 			"projected_qty": ["!=", 0],

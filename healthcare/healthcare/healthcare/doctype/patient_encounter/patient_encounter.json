@@ -40,6 +40,8 @@
   "codification_table",
   "sb_drug_prescription",
   "drug_prescription",
+  "start_date",
+  "medication_orders",
   "sb_test_prescription",
   "lab_test_prescription",
   "sb_procedures",
@@ -119,6 +121,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "user",
    "fieldname": "practitioner",
    "fieldtype": "Link",
    "in_standard_filter": 1,
@@ -346,11 +349,22 @@
    "fieldname": "practitioner_email",
    "fieldtype": "Data",
    "label": "Email del m\u00e9dico"
+  },
+  {
+   "fieldname": "medication_orders",
+   "fieldtype": "Table",
+   "label": "medication_orders",
+   "options": "Inpatient Medication Order Entry"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "start_date"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2023-07-31 17:27:44.087545",
+ "modified": "2023-08-15 10:48:47.967867",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Patient Encounter",

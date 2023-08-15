@@ -163,6 +163,11 @@
    "set_only_once": 1
   },
   {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
    "fetch_from": "patient.patient_name",
    "fieldname": "patient_name",
    "fieldtype": "Data",
@@ -390,6 +395,12 @@
    "label": "Diagn\u00f3stico principal"
   },
   {
+   "fieldname": "mingreso",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "oculto"
+  },
+  {
    "fieldname": "chief_complaint",
    "fieldtype": "Table MultiSelect",
    "label": "Motivo de Ingreso",
@@ -466,6 +477,12 @@
    "fieldtype": "Table",
    "label": "Medicaci\u00f3n",
    "options": "Drug Prescription"
+  },
+  {
+   "fieldname": "medication_orders",
+   "fieldtype": "Table",
+   "label": "Entrada de Medicacion",
+   "options": "Inpatient Medication Order Entry"
   },
   {
    "collapsible": 1,
@@ -611,23 +628,6 @@
    "options": "Inpatient Record",
    "print_hide": 1,
    "read_only": 1
-  },
-  {
-   "fieldname": "start_date",
-   "fieldtype": "Date",
-   "label": "Start Date"
-  },
-  {
-   "fieldname": "medication_orders",
-   "fieldtype": "Table",
-   "label": "Entrada de Medicacion",
-   "options": "Inpatient Medication Order Entry"
-  },
-  {
-   "fieldname": "mingreso",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "oculto"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -637,11 +637,7 @@
    "link_fieldname": "reference_name"
   }
  ],
-<<<<<<< Updated upstream
- "modified": "2023-08-14 15:15:47.342004",
-=======
- "modified": "2023-08-14 13:49:40.834253",
->>>>>>> Stashed changes
+ "modified": "2023-08-15 13:11:25.258159",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Inpatient Record",
