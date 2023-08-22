@@ -26,7 +26,8 @@
   "total_orders",
   "column_break_18",
   "completed_orders",
-  "amended_from"
+  "amended_from",
+  "vaio"
  ],
  "fields": [
   {
@@ -173,12 +174,17 @@
    "label": "Patient Sex",
    "options": "Gender",
    "read_only": 1
+  },
+  {
+   "fieldname": "vaio",
+   "fieldtype": "Data",
+   "label": "."
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-08-03 16:51:18.627322",
+ "modified": "2023-08-21 16:22:30.585255",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Inpatient Medication Order",

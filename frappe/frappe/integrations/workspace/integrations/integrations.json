@@ -199,7 +199,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-07-05 15:10:48.020139",
+ "modified": "2023-08-18 16:01:02.985938",
  "modified_by": "Administrator",
  "module": "Integrations",
  "name": "Integrations",
@@ -210,7 +210,7 @@
  "quick_lists": [],
  "restrict_to_domain": "",
  "roles": [],
- "sequence_id": 19.0,
+ "sequence_id": 20.0,
  "shortcuts": [],
  "title": "Integrations"
 }

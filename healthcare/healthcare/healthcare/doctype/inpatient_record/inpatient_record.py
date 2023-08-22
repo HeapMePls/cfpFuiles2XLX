@@ -34,12 +34,21 @@ class InpatientRecord(Document):
 			for date in dates:
 				for dose in dosage.dosage_strength:
 					entry = self.append("medication_orders")
+					entry.motivo = order.get("motivo")
 					entry.drug = order.get("drug_code")
 					entry.drug_name = frappe.db.get_value("Item", order.get("drug_code"), "item_name")
 					entry.dosage = dose.strength
 					entry.dosage_form = order.get("dosage_form")
 					entry.date = date
 					entry.time = dose.strength_time
+					entry2 = self.append("medication_orders2")
+					entry2.motivo = order.get("motivo")
+					entry2.drug = order.get("drug_code")
+					entry2.drug_name = frappe.db.get_value("Item", order.get("drug_code"), "item_name")
+					entry2.dosage = dose.strength
+					entry2.dosage_form = order.get("dosage_form")
+					entry2.date = date
+					entry2.time = dose.strength_time
 			self.end_date = dates[-1]
 		return
 
@@ -63,27 +72,24 @@ class InpatientRecord(Document):
 
 		self.save_patient_observations()
 
-	def on_update(self):
-		self.save_patient_observations()
 
-		# Obtener el primer valor del campo "diagnosis" (Table MultiSelect)
+
+	def on_update(self):
 		if self.diagnosis:
 				primer_diagnostico = self.diagnosis[0].diagnosis
-				# Guardar el primer valor en el campo "diagnostico_principal"
 				self.diagnostico_principal = primer_diagnostico
 
-		if self.chief_complaint:
-				primer_motivo = self.chief_complaint[0].chief_complaint
-				self.mingreso = primer_motivo
+		self.save_patient_observations()
+		self.save_patient_registro_medico()
+		self.save_patient_medication()
 
 	def save_patient_observations(self):
-		if not self.observaciones_ or not len(self.observaciones_) or not self.registro_médico or not len(self.registro_médico):
+		if not self.observaciones_ or not len(self.observaciones_):
 				return
 
 		old_observations = list(map(lambda x: x.as_dict(), self.get_doc_before_save().observaciones_))
-		old_observations2 = list(map(lambda x: x.as_dict(), self.get_doc_before_save().registro_médico))
 		new_observations = list(map(lambda x: x.as_dict(), self.observaciones_))
-		new_observations2 = list(map(lambda x: x.as_dict(), self.registro_médico))
+
 
 		# Reemplazo este campo que cambia siempre:
 		for obs in old_observations:
@@ -92,16 +98,10 @@ class InpatientRecord(Document):
 		for obs in new_observations:
 				obs.modified = ""
 
-		for obs in old_observations2:
-				obs.modified = ""
-
-		for obs in new_observations2:
-				obs.modified = ""
 
 		old_observations = json.dumps(old_observations, sort_keys=True, default=str)
 		new_observations = json.dumps(new_observations, sort_keys=True, default=str)
-		old_observations2 = json.dumps(old_observations2, sort_keys=True, default=str)
-		new_observations2 = json.dumps(new_observations2, sort_keys=True, default=str)
+
 
 		if old_observations != new_observations:
 				observaciones_doc = frappe.new_doc("Observaciones del paciente")
@@ -110,17 +110,28 @@ class InpatientRecord(Document):
 				observaciones_doc.save()
 				observaciones_doc.submit()
 
+	def save_patient_registro_medico(self):
+		if not self.registro_médico or not len(self.registro_médico):
+			return
+
+		old_observations2 = list(map(lambda x: x.as_dict(), self.get_doc_before_save().registro_médico))
+		new_observations2 = list(map(lambda x: x.as_dict(), self.registro_médico))
+
+		for obs in old_observations2:
+				obs.modified = ""
+
+		for obs in new_observations2:
+				obs.modified = ""
+
+		old_observations2 = json.dumps(old_observations2, sort_keys=True, default=str)
+		new_observations2 = json.dumps(new_observations2, sort_keys=True, default=str)
+
 		if old_observations2 != new_observations2:
 				registro_médicodoc = frappe.new_doc("Observaciones del paciente")
 				registro_médicodoc.patient = self.patient
 				registro_médicodoc.registro_médico = self.registro_médico.copy()  # Aquí corregimos para que use registro_médico
 				registro_médicodoc.save()
 				registro_médicodoc.submit()
-
-
-
-	def on_update(self):
-			self.save_patient_medication()
 
 	def save_patient_medication(self):
 		if not self.medication_orders or not len(self.medication_orders):
@@ -145,10 +156,7 @@ class InpatientRecord(Document):
 				medication_ordersdoc.company = self.company
 				medication_ordersdoc.medication_orders= self.medication_orders.copy()  # Aquí corregimos para que use registro_médico
 				medication_ordersdoc.save()
-				#medication_ordersdoc.submit()
-
-	##ACA HAY QUE CAMBIAR EL LADO DERECHO O IZQUIERDO Y POERLE medical_orders
-
+				medication_ordersdoc.submit()
 
 
 #				for observaciones_ in self.observaciones_:

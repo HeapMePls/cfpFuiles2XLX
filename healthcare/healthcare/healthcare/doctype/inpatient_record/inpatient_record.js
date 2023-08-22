@@ -4,24 +4,35 @@ frappe._messages['Admitted'] = 'Internado';
 frappe._messages['Discharge Scheduled'] = 'Alta esperada';
 frappe._messages['Discharged'] = 'Alta';
 frappe.ui.form.on('Inpatient Record', {
-  
-
   onload: function(frm) {
     // Oculta el campo de fecha al cargar el formulario
     toggleDateField(false);
     toggleDateField2(false);
+		frm.fields_dict['registro_médico'].grid.wrapper.find('.btn-open-row').hide();
+    frm.fields_dict['registro_médico'].grid.wrapper.find('.grid-delete-row').hide();
+    frm.fields_dict['registro_médico'].grid.wrapper.find('.grid-remove-rows').hide();
+    frm.fields_dict['observaciones_'].grid.wrapper.find('.btn-open-row').hide();
+    frm.fields_dict['observaciones_'].grid.wrapper.find('.grid-delete-row').hide();
+    frm.fields_dict['observaciones_'].grid.wrapper.find('.grid-remove-rows').hide();
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.row-index').hide();
+    frm.fields_dict['medication_orders2'].grid.wrapper.find('.row-index').hide();
     frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
-    frm.fields_dict['medication_orders'].grid.wrapper.find('.grid-add-row').hide();
+    frm.fields_dict['medication_orders2'].grid.wrapper.find('.grid-add-row').hide();
   },
+
 
   drug_prescription : function(frm){
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.row-index').hide();
+    frm.fields_dict['medication_orders2'].grid.wrapper.find('.row-index').hide();
     frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
-    frm.fields_dict['medication_orders'].grid.wrapper.find('.grid-add-row').hide();
+    frm.fields_dict['medication_orders2'].grid.wrapper.find('.grid-add-row').hide();
 
   },
-  medication_orders: function(frm) {
+  medication_orders2: function(frm) {
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.row-index').hide();
     frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
-    frm.fields_dict['medication_orders'].grid.wrapper.find('.grid-add-row').hide();
+    frm.fields_dict['medication_orders2'].grid.wrapper.find('.row-index').css('display', 'none');
+    frm.fields_dict['medication_orders2'].grid.wrapper.find('.grid-add-row').css('display', 'none');
 
   },
 
@@ -29,7 +40,7 @@ frappe.ui.form.on('Inpatient Record', {
     // Obtiene el valor actual del campo de verificación
     var checkField = frm.doc.alergico;
     // Muestra u oculta el campo de fecha según el valor del campo de verificación
-    toggleDateField(frm, checkField);
+    toggleDateField(checkField);
   },
 
   diabetes: function(frm) {
@@ -42,23 +53,36 @@ frappe.ui.form.on('Inpatient Record', {
 
 	setup: function(frm) {
 		frm.get_field('drug_prescription').grid.editable_fields = [
+			{fieldname: 'motivo', columns: 2},
 			{fieldname: 'drug_code', columns: 2},
 			{fieldname: 'dosage_form', columns: 2},
 			{fieldname: 'dosage', columns: 2},
 			{fieldname: 'period', columns: 2}
 		];
-    frm.get_field('medication_orders').grid.editable_fields = [
+    frm.get_field('medication_orders2').grid.editable_fields = [
+      {fieldname: 'motivo', columns: 1},
 			{fieldname: 'drug', columns: 2},
       {fieldname: 'dosage_form', columns: 2},
-			{fieldname: 'date', columns: 2},
-			{fieldname: 'time', columns: 2},
-      {fieldname: 'medicacion_entregada', columns: 2}
+			{fieldname: 'date', columns: 1},
+			{fieldname: 'time', columns: 1},
+      {fieldname: 'medicacion_entregada', columns: 1},
+      {fieldname: 'observaciones', columns: 2}
+
+
 		];
 	},
 
 	refresh: function(frm) {
-    frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
-    frm.fields_dict['medication_orders'].grid.wrapper.find('.grid-add-row').hide();
+		frm.fields_dict['registro_médico'].grid.wrapper.find('.btn-open-row').hide();
+    frm.fields_dict['registro_médico'].grid.wrapper.find('.grid-delete-row').hide();
+    frm.fields_dict['registro_médico'].grid.wrapper.find('.grid-remove-rows').hide();
+    frm.fields_dict['observaciones_'].grid.wrapper.find('.btn-open-row').hide();
+    frm.fields_dict['observaciones_'].grid.wrapper.find('.grid-delete-row').hide();
+    frm.fields_dict['observaciones_'].grid.wrapper.find('.grid-remove-rows').hide();
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.row-index').hide();
+		frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
+    frm.fields_dict['medication_orders2'].grid.wrapper.find('.row-index').hide();
+    frm.fields_dict['medication_orders2'].grid.wrapper.find('.grid-add-row').hide();
     frm.events.show_medication_order_button(frm);
 
 		frm.set_query('admission_service_unit_type', function() {
@@ -123,13 +147,6 @@ frappe.ui.form.on('Inpatient Record', {
 				});
 			}
 		}
-
- /* if (frappe.user.has_role('Physician')) {
-   frm.set_df_property('medication_order', 'hidden', 1);
-  }*/
-
-
-
 },
 
   btn_transfer: function(frm) {
@@ -154,6 +171,13 @@ show_medication_order_button: function(frm) {
             frappe.ui.form.save(frm.docname);
 
           }
+        },
+        {
+          fieldname: 'motivo',
+          label: __('Motivo'),
+          fieldtype: 'Select',
+          options: "Orden de medicaci\u00f3n\nSND - Si no duerme\nSEE - Si est\u00e1 excitado\nSEA - Si est\u00e1 ansioso",
+          reqd: 1
         },
         {
           fieldname: 'drug_code',
@@ -195,6 +219,7 @@ show_medication_order_button: function(frm) {
         if (values) {
           d.hide();
           frm.add_child('drug_prescription', {
+            motivo: values.motivo,
             drug_code: values.drug_code, // Reemplaza field1 con los nombres de tus campos
             drug_name: values.drug_name,
             dosage: values.dosage,
@@ -661,27 +686,19 @@ var schedule_discharge = function(frm) {
 };
 
 let cancel_ip_order = function(frm) {
-	frappe.prompt([
-		{
-			fieldname: 'Motivo de Cancelación',
-			label: __('Motivo de Cancelación'),
-			fieldtype: 'Small Text',
-			reqd: 1
-		}
-	],
-	function(data) {
-		frappe.call({
-			method: 'healthcare.healthcare.doctype.inpatient_record.inpatient_record.set_ip_order_cancelled',
-			async: false,
-			freeze: true,
-			args: {
-				inpatient_record: frm.doc.name,
-				reason: data.reason_for_cancellation
-			},
-			callback: function(r) {
-				if (!r.exc) frm.reload_doc();
-			}
-		});
-	}, __('Motivo de Cancelación'), __('Enviar'));
-}
+  frappe.call({
+      method: 'healthcare.healthcare.doctype.inpatient_record.inpatient_record.set_ip_order_cancelled',
+      async: false,
+      freeze: true,
+      args: {
+          inpatient_record: frm.doc.name
+      },
+      callback: function(r) {
+          if (!r.exc) {
+              frm.reload_doc();
+          }
+      }
+  });
+};
+
 

@@ -538,7 +538,7 @@ def create_dosage():
 			"doctype": "Prescription Dosage",
 			"name": "1-0-0",
 			"dosage": "1-0-0",
-			"dosage_strength": [{"strength": "1.0", "strength_time": "8:00:00"}],
+			"dosage_strength": [{"strength": "1.0", "strength_time": "08:00:00"}],
 		},
 		{
 			"doctype": "Prescription Dosage",
@@ -551,7 +551,7 @@ def create_dosage():
 			"name": "1-1-1",
 			"dosage": "1-1-1",
 			"dosage_strength": [
-				{"strength": "1.0", "strength_time": "8:00:00"},
+				{"strength": "1.0", "strength_time": "08:00:00"},
 				{"strength": "1.0", "strength_time": "14:00:00"},
 				{"strength": "1.0", "strength_time": "20:00:00"},
 			],
@@ -561,7 +561,7 @@ def create_dosage():
 			"name": "1-0-1",
 			"dosage": "1-0-1",
 			"dosage_strength": [
-				{"strength": "1.0", "strength_time": "8:00:00"},
+				{"strength": "1.0", "strength_time": "08:00:00"},
 				{"strength": "1.0", "strength_time": "20:00:00"},
 			],
 		},
@@ -579,7 +579,7 @@ def create_dosage():
 			"name": "1-1-0",
 			"dosage": "1-1-0",
 			"dosage_strength": [
-				{"strength": "1.0", "strength_time": "8:00:00"},
+				{"strength": "1.0", "strength_time": "08:00:00"},
 				{"strength": "1.0", "strength_time": "14:00:00"},
 			],
 		},
@@ -589,18 +589,18 @@ def create_dosage():
 			"dosage": "Once Bedtime",
 			"dosage_strength": [{"strength": "1.0", "strength_time": "21:00:00"}],
 		},
-		{
-			"doctype": "Prescription Dosage",
-			"name": "5 times a day",
-			"dosage": "5 times a day",
-			"dosage_strength": [
-				{"strength": "1.0", "strength_time": "5:00:00"},
-				{"strength": "1.0", "strength_time": "9:00:00"},
-				{"strength": "1.0", "strength_time": "13:00:00"},
-				{"strength": "1.0", "strength_time": "17:00:00"},
-				{"strength": "1.0", "strength_time": "21:00:00"},
-			],
-		},
+		#{
+		#	"doctype": "Prescription Dosage",
+		#	"name": "5 times a day",
+		#	"dosage": "5 times a day",
+		#	"dosage_strength": [
+		#		{"strength": "1.0", "strength_time": "5:00:00"},
+		#		{"strength": "1.0", "strength_time": "9:00:00"},
+		#		{"strength": "1.0", "strength_time": "13:00:00"},
+		#		{"strength": "1.0", "strength_time": "17:00:00"},
+		#		{"strength": "1.0", "strength_time": "21:00:00"},
+		#	],
+		#},
 		{
 			"doctype": "Prescription Dosage",
 			"name": "QID",
@@ -744,8 +744,8 @@ def get_patient_history_config():
 			"fecha",
 			[
         {"label": "Patient", "fieldname": "patient", "fieldtype": "Link", "options": "Patient"},
-				{"label": "Tabla de observaciones de enfermería", "fieldname": "observaciones_", "fieldtype": "Table"},
-        {"label": "Tabla de observaciones médicas", "fieldname": "registro_médico", "fieldtype": "Table"},
+				{"label": "Registro de enfermería", "fieldname": "observaciones_", "fieldtype": "Table"},
+        {"label": "Registro Médico", "fieldname": "registro_médico", "fieldtype": "Table"},
 
 				#{"label": "Symptoms", "fieldname": "symptoms", "fieldtype": "Table Multiselect"},
 			],

@@ -7,6 +7,24 @@ frappe._messages['Discharge Scheduled'] = 'Alta esperada';
 frappe._messages['Discharged'] = 'Alta';
 
 frappe.ui.form.on('Patient', {
+
+    validate: function (frm) {
+        // Obtener el valor del campo Data (Texto)
+        var campoData = frm.doc.first_name;
+        var campoData2 = frm.doc.last_name;
+
+
+        // Convertir la primera letra en mayúscula
+        var campoDataMayuscula = campoData.charAt(0).toUpperCase() + campoData.slice(1);
+        var campoDataMayuscula2 = campoData2.charAt(0).toUpperCase() + campoData2.slice(1);
+
+
+        // Asignar el valor modificado al campo Data
+        frappe.model.set_value(frm.doctype, frm.docname, 'first_name', campoDataMayuscula);
+        frappe.model.set_value(frm.doctype, frm.docname, 'last_name', campoDataMayuscula2);
+
+    },
+
 	refresh: function (frm) {
 		frm.set_query('patient', 'patient_relation', function () {
 			return {

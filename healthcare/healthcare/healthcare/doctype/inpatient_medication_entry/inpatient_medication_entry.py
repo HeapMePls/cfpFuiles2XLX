@@ -38,6 +38,7 @@ class InpatientMedicationEntry(Document):
 				{
 					"patient": data.patient,
 					"patient_name": data.patient_name,
+					"motivo": data.motivo,
 					"inpatient_record": data.inpatient_record,
 					"service_unit": data.service_unit,
 					"datetime": "%s %s" % (data.date, data.time or "00:00:00"),
@@ -176,7 +177,7 @@ class InpatientMedicationEntry(Document):
 
 	def make_stock_entry(self):
 		stock_entry = frappe.new_doc("Stock Entry")
-		stock_entry.purpose = "Material Issue"
+		stock_entry.purpose = "Material Receipt"
 		stock_entry.set_stock_entry_type()
 		stock_entry.from_warehouse = self.warehouse
 		stock_entry.company = self.company
@@ -217,7 +218,7 @@ def get_pending_medication_orders(entry):
 		"""
 		SELECT
 			ip.inpatient_record, ip.patient, ip.patient_name,
-			entry.name, entry.parent, entry.drug, entry.drug_name,
+			entry.motivo, entry.name, entry.parent, entry.drug, entry.drug_name,
 			entry.dosage, entry.dosage_form, entry.date, entry.time, entry.instructions
 		FROM
 			`tabInpatient Medication Order` ip
@@ -231,7 +232,7 @@ def get_pending_medication_orders(entry):
 			entry.is_completed = 0
 			{0}
 		ORDER BY
-			entry.date, entry.time
+			ip.patient, entry.date, entry.time
 		""".format(
 			filters
 		),

@@ -203,15 +203,13 @@
    "fieldname": "sb1",
    "fieldtype": "Section Break",
    "label": "Roles",
-   "permlevel": 1,
-   "read_only": 1
+   "permlevel": 1
   },
   {
    "fieldname": "role_profile_name",
    "fieldtype": "Link",
    "label": "Role Profile",
-   "options": "Role Profile",
-   "permlevel": 1
+   "options": "Role Profile"
   },
   {
    "fieldname": "roles_html",
@@ -616,13 +614,13 @@
    "options": "Module Profile"
   },
   {
-    "description": "Stores the datetime when the last reset password key was generated.",
-    "fieldname": "last_reset_password_key_generated_on",
-    "fieldtype": "Datetime",
-    "hidden": 1,
-    "label": "Last Reset Password Key Generated On",
-    "read_only": 1
-   },
+   "description": "Stores the datetime when the last reset password key was generated.",
+   "fieldname": "last_reset_password_key_generated_on",
+   "fieldtype": "Datetime",
+   "hidden": 1,
+   "label": "Last Reset Password Key Generated On",
+   "read_only": 1
+  },
   {
    "fieldname": "column_break_75",
    "fieldtype": "Column Break"
@@ -649,12 +647,12 @@
    "label": "Auto follow documents that you Like"
   },
   {
-    "default": "0",
-    "depends_on": "eval:(doc.document_follow_notify== 1)",
-    "fieldname": "follow_shared_documents",
-    "fieldtype": "Check",
-    "label": "Auto follow documents that are shared with you"
-   },
+   "default": "0",
+   "depends_on": "eval:(doc.document_follow_notify== 1)",
+   "fieldname": "follow_shared_documents",
+   "fieldtype": "Check",
+   "label": "Auto follow documents that are shared with you"
+  },
   {
    "default": "0",
    "depends_on": "eval:(doc.document_follow_notify== 1)",
@@ -730,7 +728,11 @@
    "link_fieldname": "user"
   }
  ],
- "modified": "2023-05-24 15:20:06.434506",
+<<<<<<< Updated upstream
+ "modified": "2023-08-18 16:53:05.374972",
+=======
+ "modified": "2023-08-18 17:19:42.022726",
+>>>>>>> Stashed changes
  "modified_by": "Administrator",
  "module": "Core",
  "name": "User",
@@ -761,7 +763,6 @@
    "select": 1
   }
  ],
- "quick_entry": 1,
  "route": "user",
  "search_fields": "full_name",
  "show_name_in_global_search": 1,

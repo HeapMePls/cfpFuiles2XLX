@@ -898,7 +898,7 @@ erpnext.stock.StockEntry = class StockEntry extends erpnext.stock.StockControlle
 
 	refresh() {
 		var me = this;
-		erpnext.toggle_naming_series();
+		//erpnext.toggle_naming_series();
 		this.toggle_related_fields(this.frm.doc);
 		this.toggle_enable_bom();
 		this.show_stock_ledger();
