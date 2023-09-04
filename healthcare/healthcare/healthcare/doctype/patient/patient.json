@@ -24,6 +24,7 @@
   "dob",
   "age_html",
   "image",
+  "observaciones",
   "column_break_14",
   "status",
   "uid",
@@ -537,13 +538,18 @@
    "hidden": 1,
    "label": "Diagnosis",
    "options": "Patient Encounter Diagnosis"
+  },
+  {
+   "fieldname": "observaciones",
+   "fieldtype": "Small Text",
+   "label": "Observaciones"
   }
  ],
  "icon": "fa fa-user",
  "image_field": "image",
  "links": [],
  "max_attachments": 50,
- "modified": "2023-07-30 17:21:57.115376",
+ "modified": "2023-08-29 17:07:23.321910",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Patient",

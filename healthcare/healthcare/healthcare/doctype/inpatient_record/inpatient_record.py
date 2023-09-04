@@ -13,6 +13,7 @@ from frappe.utils import get_datetime, get_link_to_form, getdate, now_datetime, 
 
 from healthcare.healthcare.doctype.nursing_task.nursing_task import NursingTask
 from healthcare.healthcare.utils import validate_nursing_tasks
+from datetime import datetime
 import random
 from healthcare.healthcare.doctype.patient_encounter.patient_encounter import (
 	get_prescription_dates,
@@ -52,6 +53,45 @@ class InpatientRecord(Document):
 			self.end_date = dates[-1]
 		return
 
+	
+	#@frappe.whitelist()
+	#def add_order_entries_admitted(self, order):
+		#if order.get("drug_code"):
+				#dosage = frappe.get_doc("Prescription Dosage", order.get("dosage"))
+				
+				#period = order.get("period")  # Obtener el valor del campo "period"
+
+				#if period == "1000 Week" and self.status == 'Admitted':
+						#entry_dates = []
+						#current_date = frappe.utils.today()  # Comenzar desde la fecha actual
+						#while self.status == 'Admitted':
+								#entry_dates.append(current_date)
+								#current_date = frappe.utils.add_days(current_date, 1)
+								#for date in entry_dates:
+										#for dose in dosage.dosage_strength:
+												# Convertir la cadena en un objeto datetime.time
+												#time_str = dose.strength_time
+												#time_obj = datetime.strptime(time_str, '%H:%M').time()
+
+												#entry = self.append("medication_orders")
+												#entry.motivo = order.get("motivo")
+												#entry.drug = order.get("drug_code")
+												#entry.drug_name = frappe.db.get_value("Item", order.get("drug_code"), "item_name")
+												#entry.dosage = dose.strength
+												#entry.dosage_form = order.get("dosage_form")
+												#entry.date = date
+												#entry.time = time_obj
+												#entry2 = self.append("medication_orders2")
+												#entry2.motivo = order.get("motivo")
+												#entry2.drug = order.get("drug_code")
+												#entry2.drug_name = frappe.db.get_value("Item", order.get("drug_code"), "item_name")
+												#entry2.dosage = dose.strength
+												#entry2.dosage_form = order.get("dosage_form")
+												#entry2.date = date
+												#entry2.time = time_obj
+					
+		#return
+
 	def after_insert(self):
 		frappe.db.set_value("Patient", self.patient, "inpatient_record", self.name)
 		frappe.db.set_value("Patient", self.patient, "inpatient_status", self.status)
@@ -75,13 +115,17 @@ class InpatientRecord(Document):
 
 
 	def on_update(self):
-		if self.diagnosis:
-				primer_diagnostico = self.diagnosis[0].diagnosis
-				self.diagnostico_principal = primer_diagnostico
-
+		self.actualizar_diagnostico_principal()
 		self.save_patient_observations()
 		self.save_patient_registro_medico()
 		self.save_patient_medication()
+		self.save_patient_medication2()
+
+
+	def actualizar_diagnostico_principal(self):
+		if self.diagnosis:
+			primer_diagnostico = self.diagnosis[0].diagnosis
+			self.diagnostico_principal = primer_diagnostico
 
 	def save_patient_observations(self):
 		if not self.observaciones_ or not len(self.observaciones_):
@@ -158,6 +202,30 @@ class InpatientRecord(Document):
 				medication_ordersdoc.save()
 				medication_ordersdoc.submit()
 
+	def save_patient_medication2(self):
+		if not self.medication_orders or not len(self.medication_orders):
+				return
+
+		old_medication2 = list(map(lambda x: x.as_dict(), self.get_doc_before_save().medication_orders))
+		new_medication2 = list(map(lambda x: x.as_dict(), self.medication_orders))
+
+		for obs in old_medication2:
+				obs.modified = ""
+
+		for obs in new_medication2:
+				obs.modified = ""
+
+		old_medication2 = json.dumps(old_medication2, sort_keys=True, default=str)
+		new_medication2 = json.dumps(new_medication2, sort_keys=True, default=str)
+
+		if old_medication2 != new_medication2:
+				medication_ordersdoc = frappe.new_doc("Reporte Farmacia")
+				medication_ordersdoc.patient = self.patient
+				#medication_ordersdoc.start_date = self.start_date
+				#medication_ordersdoc.company = self.company
+				medication_ordersdoc.medication_orders= self.medication_orders.copy()  # Aquí corregimos para que use registro_médico
+				medication_ordersdoc.save()
+				medication_ordersdoc.submit()
 
 #				for observaciones_ in self.observaciones_:
 #						observaciones_doc.append("registro_medico", {
@@ -221,9 +289,8 @@ class InpatientRecord(Document):
 			frappe.throw(msg)
 
 	@frappe.whitelist()
-	def admit(self, service_unit, check_in, primary_practitioner, orden_medica, indicaciones_al_ingreso, expected_discharge=None):
-		admit_patient(self, service_unit, check_in, primary_practitioner, orden_medica, indicaciones_al_ingreso,expected_discharge)
-	
+	def admit(self, service_unit, check_in, primary_practitioner, paciente_pertenencias, orden_medica, indicaciones_al_ingreso, expected_discharge=None):
+		admit_patient(self, service_unit, check_in, primary_practitioner, paciente_pertenencias, orden_medica, indicaciones_al_ingreso,expected_discharge)
 
 
 
@@ -447,12 +514,13 @@ def get_unbilled_inpatient_docs(doc, inpatient_record):
 	)
 
 
-def admit_patient(inpatient_record, service_unit, check_in, primary_practitioner, orden_medica, indicaciones_al_ingreso, expected_discharge=None):
+def admit_patient(inpatient_record, service_unit, check_in, primary_practitioner, paciente_pertenencias, orden_medica, indicaciones_al_ingreso, expected_discharge=None):
 		validate_nursing_tasks(inpatient_record)
 
 		inpatient_record.admitted_datetime = check_in
 		inpatient_record.status = "Admitted"
 		inpatient_record.primary_practitioner = primary_practitioner
+		inpatient_record.paciente_pertenencias = paciente_pertenencias
 		inpatient_record.orden_medica = orden_medica
 		inpatient_record.indicaciones_al_ingreso = indicaciones_al_ingreso
 		inpatient_record.expected_discharge = expected_discharge
@@ -524,11 +592,23 @@ def is_service_unit_billable(service_unit):
 
 
 @frappe.whitelist()
-def set_ip_order_cancelled(inpatient_record, reason, encounter=None):
+def set_ip_order_cancelled(inpatient_record, encounter=None):
 	inpatient_record = frappe.get_doc("Inpatient Record", inpatient_record)
 	if inpatient_record.status == "Admission Scheduled":
 		inpatient_record.status = "Cancelled"
-		inpatient_record.reason_for_cancellation = reason
+		#inpatient_record.reason_for_cancellation = reason
+		inpatient_record.save(ignore_permissions=True)
+		encounter_name = encounter if encounter else inpatient_record.admission_encounter
+		if encounter_name:
+			frappe.db.set_value(
+				"Patient Encounter", encounter_name, {"inpatient_status": None, "inpatient_record": None}
+			)
+
+@frappe.whitelist()
+def cancelled_discharge(inpatient_record, encounter=None):
+	inpatient_record = frappe.get_doc("Inpatient Record", inpatient_record)
+	if inpatient_record.status == "Discharge Scheduled":
+		inpatient_record.status = "Admitted"
 		inpatient_record.save(ignore_permissions=True)
 		encounter_name = encounter if encounter else inpatient_record.admission_encounter
 		if encounter_name:
@@ -547,6 +627,16 @@ def set_ip_order_cancelled(inpatient_record, reason, encounter=None):
 #def on_update():
   # Aquí se agrega el cron job para ejecutar la función cada 48 horas
 # enqueue("healthcare.healthcare.doctype.inpatient_record.inpatient_record.cancel_reserved_bed_cron", queue='long', timeout=300, now=True)
+@frappe.whitelist()
+def suspend_medication(docname, suspension_date):
+		inpatient_record = frappe.get_doc("Inpatient Record", docname)
+
+		# Itera a través de las entradas de medicación y suspende las posteriores a la fecha proporcionada
+		for entry in inpatient_record.medication_orders2:
+				if entry.date >= suspension_date:
+						entry.status = "Suspended"
+
+		inpatient_record.save()
 
 import random
 def pruebaNacho():

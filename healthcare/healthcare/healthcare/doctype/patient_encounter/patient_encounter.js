@@ -362,7 +362,7 @@ var schedule_inpatient = function(frm) {
       { fieldtype: "Data", label: "Género del paciente", fieldname: "gender", hidden: 1},
 
 			//{fieldtype: 'Data', label: 'Medical Department', fieldname: 'medical_department', default: 'Psiquiatría'},
-      {fieldtype: 'Link', label: 'Service Unit Type', fieldname: 'service_unit_type', options: 'Healthcare Service Unit Type'},
+      //{fieldtype: 'Link', label: 'Service Unit Type', fieldname: 'service_unit_type', options: 'Healthcare Service Unit Type'},
 			{fieldtype: 'Link', label: 'Healthcare Practitioner (Primary)', fieldname: 'primary_practitioner', options: 'Healthcare Practitioner', reqd: 1},
 			//{fieldtype: 'Link', label: 'Healthcare Practitioner (Secondary)', fieldname: 'secondary_practitioner', options: 'Healthcare Practitioner'},
 			//{fieldtype: 'Link', label: 'Nursing Checklist Template', fieldname: 'admission_nursing_checklist_template', options: 'Nursing Checklist Template'},
@@ -383,7 +383,7 @@ var schedule_inpatient = function(frm) {
 				primary_practitioner: dialog.get_value('primary_practitioner'),
 				//secondary_practitioner: dialog.get_value('secondary_practitioner'),
 				admission_ordered_for: dialog.get_value('admission_ordered_for'),
-				admission_service_unit_type: dialog.get_value('service_unit_type'),
+				//admission_service_unit_type: dialog.get_value('service_unit_type'),
 				//expected_length_of_stay: dialog.get_value('expected_length_of_stay'),
 				admission_instruction: dialog.get_value('admission_instruction'),
 				//admission_nursing_checklist_template: dialog.get_value('admission_nursing_checklist_template')
@@ -405,7 +405,7 @@ var schedule_inpatient = function(frm) {
 			dialog.hide();
 		}
 	});
-  if (frm.doc.patient_sex) {
+  /*if (frm.doc.patient_sex) {
     dialog.set_value('gender', frm.doc.patient_sex);
   }
   
@@ -427,21 +427,21 @@ var schedule_inpatient = function(frm) {
         }
       };
     };
-  };
+  };*/
 
 	dialog.set_values({
 		'medical_department': frm.doc.medical_department,
 		'primary_practitioner': frm.doc.practitioner,
 	});
 
-	dialog.fields_dict['service_unit_type'].get_query = function() {
+	/*dialog.fields_dict['service_unit_type'].get_query = function() {
 		return {
 			filters: {
 				'inpatient_occupancy': 1,
 				'allow_appointments': 0
 			}
 		};
-	};
+	};*/
 
 	dialog.show();
 	dialog.$wrapper.find('.modal-dialog').css('width', '800px');

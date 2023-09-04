@@ -47,9 +47,10 @@
   "cb_admission",
   "ordenes_de_admision",
   "primary_practitioner",
+  "paciente_pertenencias",
+  "column_break_rwyto",
   "practitioner_email",
   "secondary_practitioner",
-  "admission_instruction",
   "encounter_details_section",
   "diagnostico_principal",
   "mingreso",
@@ -87,6 +88,7 @@
   "discharge_instructions",
   "followup_date",
   "sb_discharge_note",
+  "firma",
   "discharge_note",
   "amended_from"
  ],
@@ -101,13 +103,15 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Series",
-   "options": "HLC-INP-.YYYY.-"
+   "options": "HLC-INP-.YYYY.-",
+   "print_hide": 1
   },
   {
    "collapsible": 1,
    "fieldname": "alerta",
    "fieldtype": "Section Break",
-   "label": "Alertas y Pendientes"
+   "label": "Alertas y Pendientes",
+   "print_hide": 1
   },
   {
    "fieldname": "color",
@@ -115,19 +119,22 @@
    "in_filter": 1,
    "in_list_view": 1,
    "label": "Color de alerta",
-   "options": "\nRojo\nVerde\nAmarillo"
+   "options": "\nRojo\nVerde\nAmarillo",
+   "print_hide": 1
   },
   {
    "fieldname": "alerta_",
    "fieldtype": "Text Editor",
    "in_list_view": 1,
-   "label": "Alertas y Pendientes "
+   "label": "Alertas y Pendientes ",
+   "print_hide": 1
   },
   {
    "collapsible": 1,
    "fieldname": "observations",
    "fieldtype": "Section Break",
-   "label": "Registros de Enfermeria"
+   "label": "Registros de Enfermeria",
+   "print_hide": 1
   },
   {
    "description": "Luego de agregar una fila, presionar el boton 'Guardar'.",
@@ -147,7 +154,8 @@
    "fieldname": "registro_m\u00e9dico",
    "fieldtype": "Table",
    "label": "Registro M\u00e9dico ",
-   "options": "Tabla de observaciones"
+   "options": "Tabla de observaciones",
+   "print_hide": 1
   },
   {
    "fieldname": "section_break_muunk",
@@ -165,7 +173,8 @@
   {
    "fieldname": "start_date",
    "fieldtype": "Date",
-   "label": "Start Date"
+   "label": "Start Date",
+   "print_hide": 1
   },
   {
    "fetch_from": "patient.patient_name",
@@ -189,6 +198,7 @@
    "hidden": 1,
    "label": "Blood Group",
    "options": "\nA Positive\nA Negative\nAB Positive\nAB Negative\nB Positive\nB Negative\nO Positive\nO Negative",
+   "print_hide": 1,
    "read_only": 1
   },
   {
@@ -242,7 +252,8 @@
    "fieldtype": "Link",
    "in_standard_filter": 1,
    "label": "Company",
-   "options": "Company"
+   "options": "Company",
+   "print_hide": 1
   },
   {
    "default": "Admission Scheduled",
@@ -250,6 +261,7 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Admission Scheduled\nAdmitted\nDischarge Scheduled\nDischarged\nCancelled",
+   "print_hide": 1,
    "read_only": 1
   },
   {
@@ -271,32 +283,37 @@
    "fieldtype": "Date",
    "hidden": 1,
    "label": "Alta Esperada",
+   "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "orden_medica",
    "fieldtype": "Attach",
    "label": "Orden m\u00e9dica",
-   "mandatory_depends_on": "eval:doc.status===\"Admitted\""
+   "mandatory_depends_on": "eval:doc.status===\"Admitted\"",
+   "print_hide": 1
   },
   {
    "fieldname": "indicaciones_al_ingreso",
    "fieldtype": "Attach",
    "label": "Indicaciones al ingreso",
-   "mandatory_depends_on": "eval:doc.status===\"Admitted\""
+   "mandatory_depends_on": "eval:doc.status===\"Admitted\"",
+   "print_hide": 1
   },
   {
    "collapsible": 1,
    "fieldname": "references",
    "fieldtype": "Section Break",
    "hidden": 1,
-   "label": "M\u00e9dico Tratante"
+   "label": "M\u00e9dico Tratante",
+   "print_hide": 1
   },
   {
    "fieldname": "admission_encounter",
    "fieldtype": "Link",
    "label": "Patient Encounter",
    "options": "Patient Encounter",
+   "print_hide": 1,
    "read_only": 1
   },
   {
@@ -341,6 +358,7 @@
    "fieldname": "expected_length_of_stay",
    "fieldtype": "Int",
    "label": "Expected Length of Stay",
+   "print_hide": 1,
    "set_only_once": 1
   },
   {
@@ -364,20 +382,16 @@
   {
    "fieldname": "practitioner_email",
    "fieldtype": "Data",
-   "label": "Email del m\u00e9dico"
+   "label": "Email del m\u00e9dico",
+   "print_hide": 1
   },
   {
    "fieldname": "secondary_practitioner",
    "fieldtype": "Link",
    "hidden": 1,
    "label": "Healthcare Practitioner (Secondary)",
-   "options": "Healthcare Practitioner"
-  },
-  {
-   "fieldname": "admission_instruction",
-   "fieldtype": "Small Text",
-   "label": "Intrucciones de Admision",
-   "set_only_once": 1
+   "options": "Healthcare Practitioner",
+   "print_hide": 1
   },
   {
    "collapsible_depends_on": "eval:(doc.status == \"Admitted\")",
@@ -385,45 +399,52 @@
    "fieldname": "encounter_details_section",
    "fieldtype": "Section Break",
    "label": "Informacion Medica",
-   "permlevel": 1
+   "permlevel": 1,
+   "print_hide": 1
   },
   {
    "fieldname": "diagnostico_principal",
    "fieldtype": "Data",
    "hidden": 1,
    "in_list_view": 1,
-   "label": "Diagn\u00f3stico principal"
+   "label": "Diagn\u00f3stico principal",
+   "print_hide": 1
   },
   {
    "fieldname": "mingreso",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "oculto"
+   "label": "oculto",
+   "print_hide": 1
   },
   {
    "fieldname": "chief_complaint",
    "fieldtype": "Table MultiSelect",
    "label": "Motivo de Ingreso",
    "mandatory_depends_on": "//eval:doc.status ==\"Admitted\"",
-   "options": "Patient Encounter Symptom"
+   "options": "Patient Encounter Symptom",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "celiaco",
    "fieldtype": "Check",
-   "label": "Cel\u00edaco"
+   "label": "Cel\u00edaco",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "gastritis",
    "fieldtype": "Check",
-   "label": "Gastritis"
+   "label": "Gastritis",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "hipertenso",
    "fieldtype": "Check",
-   "label": "Hipertenso"
+   "label": "Hipertenso",
+   "print_hide": 1
   },
   {
    "fieldname": "column_break_29",
@@ -434,56 +455,65 @@
    "fieldtype": "Table MultiSelect",
    "label": "Diagnostico",
    "mandatory_depends_on": "//eval:doc.status ==\"Admitted\"",
-   "options": "Patient Encounter Diagnosis"
+   "options": "Patient Encounter Diagnosis",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "alergico",
    "fieldtype": "Check",
-   "label": "Al\u00e9rgico"
+   "label": "Al\u00e9rgico",
+   "print_hide": 1
   },
   {
    "fieldname": "tipo_de_alergia",
    "fieldtype": "Data",
-   "label": "Tipo de alergia"
+   "label": "Tipo de alergia",
+   "print_hide": 1
   },
   {
    "default": "0",
    "fieldname": "diabetes",
    "fieldtype": "Check",
-   "label": "Diabetes"
+   "label": "Diabetes",
+   "print_hide": 1
   },
   {
    "fieldname": "tipo_de_diabetes",
    "fieldtype": "Select",
    "label": "Tipo de diabetes",
-   "options": "1\n2"
+   "options": "1\n2",
+   "print_hide": 1
   },
   {
    "fieldname": "fecha_guardado",
    "fieldtype": "Datetime",
    "hidden": 1,
-   "label": "Fecha guardado"
+   "label": "Fecha guardado",
+   "print_hide": 1
   },
   {
    "depends_on": "eval:!doc.__islocal;",
    "fieldname": "medication_section",
    "fieldtype": "Section Break",
    "label": "Medications",
-   "permlevel": 1
+   "permlevel": 1,
+   "print_hide": 1
   },
   {
    "fieldname": "drug_prescription",
    "fieldtype": "Table",
    "label": "Medicaci\u00f3n",
-   "options": "Drug Prescription"
+   "options": "Drug Prescription",
+   "print_hide": 1
   },
   {
    "fieldname": "medication_orders",
    "fieldtype": "Table",
    "hidden": 1,
    "label": "Entrada de Medicacion",
-   "options": "Inpatient Medication Order Entry"
+   "options": "Inpatient Medication Order Entry",
+   "print_hide": 1
   },
   {
    "collapsible": 1,
@@ -492,7 +522,8 @@
    "fieldtype": "Section Break",
    "hidden": 1,
    "label": "Investigations",
-   "permlevel": 1
+   "permlevel": 1,
+   "print_hide": 1
   },
   {
    "fieldname": "lab_test_prescription",
@@ -508,7 +539,8 @@
    "fieldtype": "Section Break",
    "hidden": 1,
    "label": "Procedures",
-   "permlevel": 1
+   "permlevel": 1,
+   "print_hide": 1
   },
   {
    "fieldname": "procedure_prescription",
@@ -523,7 +555,8 @@
    "fieldtype": "Section Break",
    "hidden": 1,
    "label": "Rehabilitation",
-   "permlevel": 1
+   "permlevel": 1,
+   "print_hide": 1
   },
   {
    "fieldname": "therapy_plan",
@@ -544,19 +577,21 @@
    "depends_on": "eval:(doc.status != \"Admission Scheduled\")",
    "fieldname": "sb_inpatient_occupancy",
    "fieldtype": "Section Break",
-   "label": "Inpatient Occupancy"
+   "label": "Inpatient Occupancy",
+   "print_hide": 1
   },
   {
    "fieldname": "inpatient_occupancies",
    "fieldtype": "Table",
    "options": "Inpatient Occupancy",
-   "permlevel": 2
+   "permlevel": 2,
+   "print_hide": 1
   },
   {
    "depends_on": "eval:doc.status == 'Admitted';",
    "fieldname": "btn_transfer",
    "fieldtype": "Button",
-   "label": "Cambio"
+   "label": "Cambiar Habitaci\u00f3n"
   },
   {
    "collapsible": 1,
@@ -564,7 +599,8 @@
    "depends_on": "eval:(doc.status == \"Discharge Scheduled\" || doc.status == \"Discharged\")",
    "fieldname": "sb_discharge_details",
    "fieldtype": "Section Break",
-   "label": "Detalles del alta"
+   "label": "Detalles del alta",
+   "print_hide": 1
   },
   {
    "fieldname": "discharge_ordered_date",
@@ -613,7 +649,8 @@
    "collapsible_depends_on": "eval:(doc.status == \"Discharge Scheduled\" || doc.status == \"Discharged\")",
    "depends_on": "eval:(doc.status == \"Discharge Scheduled\" || doc.status == \"Discharged\")",
    "fieldname": "sb_discharge_note",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "print_hide": 1
   },
   {
    "fieldname": "discharge_note",
@@ -634,7 +671,27 @@
    "fieldname": "medication_orders2",
    "fieldtype": "Table",
    "label": "Entrada de Medicacion",
-   "options": "Inpatient Medication Order Entry"
+   "options": "Inpatient Medication Order Entry",
+   "print_hide": 1
+  },
+  {
+   "bold": 1,
+   "description": "En caso de no tener pertenecias, poner un guion. ",
+   "fieldname": "paciente_pertenencias",
+   "fieldtype": "Small Text",
+   "label": "Pertenencias del paciente"
+  },
+  {
+   "bold": 1,
+   "fieldname": "firma",
+   "fieldtype": "Signature",
+   "hidden": 1,
+   "label": "Firma",
+   "print_width": "500"
+  },
+  {
+   "fieldname": "column_break_rwyto",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -644,7 +701,7 @@
    "link_fieldname": "reference_name"
   }
  ],
- "modified": "2023-08-21 15:48:52.439740",
+ "modified": "2023-08-24 15:42:29.434712",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Inpatient Record",

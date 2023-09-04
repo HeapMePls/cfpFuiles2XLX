@@ -239,6 +239,7 @@
    "options": "Project"
   },
   {
+   "default": "Casa Fuente del Prado",
    "fieldname": "company",
    "fieldtype": "Link",
    "in_filter": 1,
@@ -317,7 +318,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-21 06:25:30.040801",
+ "modified": "2023-08-23 15:12:38.118202",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Ledger Entry",

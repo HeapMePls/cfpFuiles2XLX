@@ -203,13 +203,15 @@
    "fieldname": "sb1",
    "fieldtype": "Section Break",
    "label": "Roles",
-   "permlevel": 1
+   "permlevel": 1,
+   "read_only": 1
   },
   {
    "fieldname": "role_profile_name",
    "fieldtype": "Link",
    "label": "Role Profile",
-   "options": "Role Profile"
+   "options": "Role Profile",
+   "permlevel": 1
   },
   {
    "fieldname": "roles_html",
@@ -728,11 +730,7 @@
    "link_fieldname": "user"
   }
  ],
-<<<<<<< Updated upstream
  "modified": "2023-08-18 16:53:05.374972",
-=======
- "modified": "2023-08-18 17:19:42.022726",
->>>>>>> Stashed changes
  "modified_by": "Administrator",
  "module": "Core",
  "name": "User",

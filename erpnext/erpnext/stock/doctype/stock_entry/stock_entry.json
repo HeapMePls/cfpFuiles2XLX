@@ -95,10 +95,12 @@
    "oldfieldtype": "Select",
    "options": "MAT-STE-.YYYY.-",
    "print_hide": 1,
+   "report_hide": 1,
    "reqd": 1,
    "set_only_once": 1
   },
   {
+   "default": "Material Receipt",
    "fieldname": "stock_entry_type",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -692,7 +694,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-08-16 17:24:03.223619",
+ "modified": "2023-08-28 16:14:04.867202",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Entry",

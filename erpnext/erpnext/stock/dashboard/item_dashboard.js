@@ -237,12 +237,12 @@ erpnext.stock.move_item = function (item, source, target, actual_qty, callback) 
 			fieldtype: 'Float',
 			description: __('Available {0}', [actual_qty])
 		},
-		{
+		/*{
 			fieldname: 'rate',
 			label: __('Rate'),
 			fieldtype: 'Currency',
 			hidden: 1
-		},
+		},*/
 		],
 	});
 	dialog.show();
