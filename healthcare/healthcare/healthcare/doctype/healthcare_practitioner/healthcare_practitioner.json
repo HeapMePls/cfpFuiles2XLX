@@ -2,7 +2,7 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "prompt",
  "creation": "2016-02-23 11:20:53.565119",
  "doctype": "DocType",
  "document_type": "Setup",
@@ -357,11 +357,12 @@
  ],
  "image_field": "image",
  "links": [],
- "modified": "2023-03-04 18:33:25.753648",
+ "modified": "2023-09-15 14:29:54.691032",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Healthcare Practitioner",
- "naming_rule": "By \"Naming Series\" field",
+ "name_case": "UPPER CASE",
+ "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [
   {

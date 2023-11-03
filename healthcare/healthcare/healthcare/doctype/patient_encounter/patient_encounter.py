@@ -209,6 +209,8 @@ def get_prescription_dates(period, start_date):
 	prescription_duration = frappe.get_doc("Prescription Duration", period)
 	days = prescription_duration.get_days()
 	dates = [start_date]
+	# TODO: Arreglar esto que esta mal
+	days = int(days)
 	for i in range(1, days):
 		dates.append(add_days(getdate(start_date), i))
 	return dates

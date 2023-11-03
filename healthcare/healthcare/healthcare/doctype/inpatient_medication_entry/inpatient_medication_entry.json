@@ -62,9 +62,9 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Status",
-   "options": "\nDraft\nSubmitted\nPending\nIn Process\nCompleted\nCancelled",
-   "read_only": 1
+   "options": "\nDraft\nSubmitted\nPending\nIn Process\nCompleted\nCancelled"
   },
   {
    "collapsible": 1,
@@ -182,7 +182,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-08-15 11:29:31.465306",
+ "modified": "2023-10-03 16:03:50.337347",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Inpatient Medication Entry",

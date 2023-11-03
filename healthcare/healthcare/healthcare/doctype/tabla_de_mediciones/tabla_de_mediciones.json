@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-09-08 15:26:24.689770",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "presion",
+  "temperatura",
+  "pulso",
+  "hemoglucotest",
+  "name_"
+ ],
+ "fields": [
+  {
+   "fieldname": "presion",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Presion Arterial "
+  },
+  {
+   "fieldname": "temperatura",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Temperatura"
+  },
+  {
+   "default": "user_fullname",
+   "fieldname": "name_",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nombre del Practicante"
+  },
+  {
+   "fieldname": "pulso",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Pulso"
+  },
+  {
+   "fieldname": "hemoglucotest",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "hemoglucotest"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-10-02 14:18:24.251608",
+ "modified_by": "Administrator",
+ "module": "Healthcare",
+ "name": "Tabla de mediciones",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

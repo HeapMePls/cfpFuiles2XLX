@@ -75,6 +75,7 @@ class InpatientMedicationOrder(Document):
 					entry.drug = order.get("drug_code")
 					entry.drug_name = frappe.db.get_value("Item", order.get("drug_code"), "item_name")
 					entry.dosage = dose.strength
+					entry.cantidad = order.get("cantidad")
 					entry.dosage_form = order.get("dosage_form")
 					entry.date = date
 					entry.time = dose.strength_time

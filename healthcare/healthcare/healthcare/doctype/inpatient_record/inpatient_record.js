@@ -8,23 +8,25 @@ frappe.ui.form.on('Inpatient Record', {
     // Oculta el campo de fecha al cargar el formulario
     frm.fields_dict['drug_prescription'].grid.wrapper.find('.row-index').hide();
     frm.fields_dict['medication_orders2'].grid.wrapper.find('.row-index').hide();
-    frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
-    frm.fields_dict['medication_orders2'].grid.wrapper.find('.grid-add-row').hide();
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.btn-secondary').hide();
+    frm.fields_dict['medication_orders2'].grid.wrapper.find('.btn-secondary').hide();
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.btn-open-row').hide();
   },
 
 
   drug_prescription : function(frm){
     frm.fields_dict['drug_prescription'].grid.wrapper.find('.row-index').hide();
     frm.fields_dict['medication_orders2'].grid.wrapper.find('.row-index').hide();
-    frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
-    frm.fields_dict['medication_orders2'].grid.wrapper.find('.grid-add-row').hide();
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.btn-secondary').hide();
+    frm.fields_dict['medication_orders2'].grid.wrapper.find('.btn-secondary').hide();
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.btn-open-row').hide();
 
   },
   medication_orders2: function(frm) {
     frm.fields_dict['drug_prescription'].grid.wrapper.find('.row-index').hide();
-    frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.btn-secondary').hide();
     frm.fields_dict['medication_orders2'].grid.wrapper.find('.row-index').css('display', 'none');
-    frm.fields_dict['medication_orders2'].grid.wrapper.find('.grid-add-row').css('display', 'none');
+    frm.fields_dict['medication_orders2'].grid.wrapper.find('.btn-secondary').css('display', 'none');
 
   },
 
@@ -48,6 +50,7 @@ frappe.ui.form.on('Inpatient Record', {
 			{fieldname: 'motivo', columns: 2},
 			{fieldname: 'drug_code', columns: 2},
 			{fieldname: 'dosage_form', columns: 2},
+      {fieldname: 'cantidad', columns: 1},
 			{fieldname: 'dosage', columns: 2},
 			{fieldname: 'period', columns: 2}
 		];
@@ -55,33 +58,22 @@ frappe.ui.form.on('Inpatient Record', {
       {fieldname: 'motivo', columns: 1},
 			{fieldname: 'drug', columns: 2},
       {fieldname: 'dosage_form', columns: 2},
+      {fieldname: 'cantidad', columns: 1},
 			{fieldname: 'date', columns: 1},
 			{fieldname: 'time', columns: 1},
       {fieldname: 'medicacion_entregada', columns: 1},
       {fieldname: 'observaciones', columns: 2}
-
-
-		];
+    ];
 	},
 
 	refresh: function(frm) {
-    frm.fields_dict['drug_prescription'].grid.get_field('suspender_medicacion').get_query = function(doc, cdt, cdn) {
-      var child = locals[cdt][cdn];
-      console.log('Boton haciendo click')
-      return {
-          "method": "healthcare.healthcare.doctype.inpatient_record.inpatient_record.suspend_medication", // Reemplaza con la ruta correcta de tu función
-          "args": {
-              "docname": doc.name,
-              "suspension_date": child.date // Pasa la fecha de la entrada actual
-          }
-      };
-  };
     frm.fields_dict['observaciones_'].grid.wrapper.find('.btn-open-row').hide();
     frm.fields_dict['observaciones_'].grid.wrapper.find('.grid-delete-row').hide();
     frm.fields_dict['observaciones_'].grid.wrapper.find('.grid-remove-rows').hide();
 		frm.fields_dict['registro_médico'].grid.wrapper.find('.btn-open-row').hide();
     frm.fields_dict['registro_médico'].grid.wrapper.find('.grid-delete-row').hide();
     frm.fields_dict['registro_médico'].grid.wrapper.find('.grid-remove-rows').hide();
+    frm.fields_dict['drug_prescription'].grid.wrapper.find('.btn-open-row').hide();
     frm.fields_dict['drug_prescription'].grid.wrapper.find('.row-index').hide();
 		frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
     frm.fields_dict['medication_orders2'].grid.wrapper.find('.row-index').hide();
@@ -153,6 +145,8 @@ frappe.ui.form.on('Inpatient Record', {
       });
       }
     }
+
+
 },
 
 btn_transfer: function(frm) {
@@ -160,7 +154,9 @@ btn_transfer: function(frm) {
 },
 
 show_medication_order_button: function(frm) {
+  frm.fields_dict['drug_prescription'].grid.wrapper.find('.btn-open-row').hide();
   frm.fields_dict['drug_prescription'].grid.wrapper.find('.grid-add-row').hide();
+z
   frm.fields_dict['drug_prescription'].grid.add_custom_button(__('Agregar orden de medicación'), () => {
     let d = new frappe.ui.Dialog({
       title: __('Agregar oden de medicación'),
@@ -179,6 +175,20 @@ show_medication_order_button: function(frm) {
 
           }
         },
+        /*{
+          fieldname: 'estado_medicacion',
+          label: __('Estado'),
+          fieldtype: 'Data',
+          default: "Cancelled",
+          reqd: 1,
+          onchange: () => {
+            // Actualizar el campo start_date en el Doctype al cambiar en el diálogo
+            frm.doc.estado_medicacion = d.get_value('estado_medicacion');
+            frm.refresh_field('estado_medicacion');
+            frappe.ui.form.save(frm.docname);
+
+          }
+        },*/
         {
           fieldname: 'motivo',
           label: __('Motivo'),
@@ -204,6 +214,14 @@ show_medication_order_button: function(frm) {
           fieldtype: 'Link',
           options: 'Prescription Dosage',
           reqd: 1
+        },
+        {
+          fieldname: "cantidad",
+          label: __("Cantidad"),
+          fieldtype: "Select",
+          options: "0.5\n1\n1.5\n2\n2.5\n3",
+          redq: 1,
+          default: '1'
         },
         {
           fieldname: 'period',
@@ -242,6 +260,7 @@ show_medication_order_button: function(frm) {
             motivo: values.motivo,
             drug_code: values.drug_code, // Reemplaza field1 con los nombres de tus campos
             drug_name: values.drug_name,
+            cantidad: values.cantidad,
             dosage: values.dosage,
             period: values.period,
             dosage_form: values.dosage_form,
@@ -267,6 +286,11 @@ show_medication_order_button: function(frm) {
       },
     });
     d.show();
+  });
+
+  // botón prueba
+  frm.fields_dict['drug_prescription'].grid.add_custom_button(__('Botón de Prueba'), () => {
+    frappe.msgprint(__('Boton de prueba holis'));
   });
 },
 
@@ -372,18 +396,19 @@ let discharge_patient = function(frm) {
       ],
 		primary_action_label: __('Alta del Paciente'),
 		primary_action : function(){
-      let discharge_practitioner = dialog.get_value('discharge_practitioner');
-      let discharge_ordered_datetime = dialog.get_value('discharge_ordered_datetime');
+      //let discharge_practitioner = dialog.get_value('discharge_practitioner');
+      //let discharge_ordered_datetime = dialog.get_value('discharge_ordered_datetime');
       let discharge_instructions = dialog.get_value('discharge_instructions');
-      let discharge_note = dialog.get_value('discharge_note');
+      //let discharge_note = dialog.get_value('discharge_note');
 			frappe.call({
 				doc: frm.doc,
 				method: 'discharge',
         args:{
-          discharge_practitioner: frm.doc.discharge_practitioner,
-          discharge_ordered_datetime: frm.doc.discharge_ordered_datetime,
-          discharge_instructions: frm.doc.discharge_instruction,
-          discharge_note: frm.doc.discharge_note
+          //discharge_practitioner: discharge_practitioner,
+          //discharge_practitioner: discharge_practitioner,
+          //discharge_ordered_datetime: discharge_ordered_datetime,
+          discharge_instructions: discharge_instructions,
+          //discharge_note: discharge_note
 				},
 				callback: function(data) {
 				if (!data.exc) {

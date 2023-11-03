@@ -122,7 +122,7 @@ frappe.ui.form.on('Patient', {
       }
     };
 
-    if (!frm.doc.__islocal && (inpatientStatus!="Admitted") && (inpatientStatus!="Admission Scheduled")) {
+    if (!frm.doc.__islocal && (inpatientStatus != "Admitted") && (inpatientStatus != "Admission Scheduled")) {
       frm.add_custom_button(__('Programar admisión'), function () { 
         create_encuentro_medico(frm); 
       }); 

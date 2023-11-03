@@ -39,6 +39,7 @@ class InpatientMedicationEntry(Document):
 					"patient": data.patient,
 					"patient_name": data.patient_name,
 					"motivo": data.motivo,
+					"cantidad": data.cantidad,
 					"inpatient_record": data.inpatient_record,
 					"service_unit": data.service_unit,
 					"datetime": "%s %s" % (data.date, data.time or "00:00:00"),
@@ -218,7 +219,7 @@ def get_pending_medication_orders(entry):
 		"""
 		SELECT
 			ip.inpatient_record, ip.patient, ip.patient_name,
-			entry.motivo, entry.name, entry.parent, entry.drug, entry.drug_name,
+			entry.motivo, entry.cantidad, entry.name, entry.parent, entry.drug, entry.drug_name,
 			entry.dosage, entry.dosage_form, entry.date, entry.time, entry.instructions
 		FROM
 			`tabInpatient Medication Order` ip

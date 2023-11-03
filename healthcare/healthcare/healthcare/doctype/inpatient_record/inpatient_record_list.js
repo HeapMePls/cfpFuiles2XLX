@@ -1,8 +1,17 @@
 frappe.listview_settings["Inpatient Record"] = {
   filters: [["status", "not in", ["Discharged"]]],
   get_indicator: function (doc) {
-    // Esta función get_indicator no se utilizará en este caso
-  },
+		if (doc.status === 'Admission Scheduled') {
+			return [__('Admission Scheduled'), 'blue', 'status, =, Admission Scheduled'];
+		} else if (doc.status === 'Admitted') {
+			return [__('Admitted'), 'green', 'status, =, Admitted'];
+		} else if (doc.status === 'Discharge Scheduled') {
+			return [__('Discharge Scheduled'), 'orange', 'status, =, Discharge Scheduled'];
+		}  else if (doc.status === 'Discharged') {
+			return [__('Discharged'), 'red', 'status, =, Discharged'];
+		}
+	},
+
   hide_name_column: true,
   hide_identificador: true,
   hide_filter: true,
@@ -34,7 +43,7 @@ function applyRowStyles() {
 
   for (let element of rows) {
     // Agarro la columna que tiene el color con el texto
-    const columnaColor = element.getElementsByClassName("list-row-col")[2];
+    const columnaColor = element.getElementsByClassName("list-row-col")[3];
     const color = columnaColor.innerText; // Saco el color
 
     const pill = element.getElementsByClassName('indicator-pill')[0];

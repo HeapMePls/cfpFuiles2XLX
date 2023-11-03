@@ -15,6 +15,8 @@
   "observaciones_",
   "registro_m\u00e9dico_section",
   "registro_m\u00e9dico",
+  "sb_mediciones_diarias",
+  "mediciones_diarias",
   "section_break_muunk",
   "patient",
   "start_date",
@@ -65,6 +67,8 @@
   "diabetes",
   "tipo_de_diabetes",
   "fecha_guardado",
+  "adjuntar_section",
+  "adjuntar_documento",
   "medication_section",
   "drug_prescription",
   "medication_orders2",
@@ -78,6 +82,7 @@
   "therapies",
   "sb_inpatient_occupancy",
   "inpatient_occupancies",
+  "cama_actual",
   "btn_transfer",
   "sb_discharge_details",
   "discharge_ordered_date",
@@ -289,14 +294,14 @@
   {
    "fieldname": "orden_medica",
    "fieldtype": "Attach",
-   "label": "Orden m\u00e9dica",
+   "label": "Medicaci\u00f3n Pautada",
    "mandatory_depends_on": "eval:doc.status===\"Admitted\"",
    "print_hide": 1
   },
   {
    "fieldname": "indicaciones_al_ingreso",
    "fieldtype": "Attach",
-   "label": "Indicaciones al ingreso",
+   "label": "Valoraci\u00f3n m\u00e9dica y/o psiqui\u00e1trica de ingreso",
    "mandatory_depends_on": "eval:doc.status===\"Admitted\"",
    "print_hide": 1
   },
@@ -692,6 +697,35 @@
   {
    "fieldname": "column_break_rwyto",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mediciones_diarias",
+   "fieldtype": "Table",
+   "label": "Mediciones Diarias",
+   "options": "Tabla de mediciones"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "sb_mediciones_diarias",
+   "fieldtype": "Section Break",
+   "label": "Mediciones Diarias"
+  },
+  {
+   "fieldname": "cama_actual",
+   "fieldtype": "Data",
+   "label": "Cama Actual"
+  },
+  {
+   "fieldname": "adjuntar_documento",
+   "fieldtype": "Table",
+   "label": "Adjuntar documento",
+   "options": "Tabla de Adjuntos"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "adjuntar_section",
+   "fieldtype": "Section Break",
+   "label": "Adjuntar"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -701,7 +735,7 @@
    "link_fieldname": "reference_name"
   }
  ],
- "modified": "2023-08-24 15:42:29.434712",
+ "modified": "2023-10-31 14:03:05.093696",
  "modified_by": "Administrator",
  "module": "Healthcare",
  "name": "Inpatient Record",

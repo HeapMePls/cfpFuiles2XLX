@@ -485,32 +485,32 @@ def create_lab_test_uom():
 
 def create_duration():
 	records = [
-		{"doctype": "Prescription Duration", "name": "3 Month", "number": "3", "period": "Month"},
-		{"doctype": "Prescription Duration", "name": "2 Month", "number": "2", "period": "Month"},
-		{"doctype": "Prescription Duration", "name": "1 Month", "number": "1", "period": "Month"},
-		{"doctype": "Prescription Duration", "name": "12 Hour", "number": "12", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "11 Hour", "number": "11", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "10 Hour", "number": "10", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "9 Hour", "number": "9", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "8 Hour", "number": "8", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "7 Hour", "number": "7", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "6 Hour", "number": "6", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "5 Hour", "number": "5", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "4 Hour", "number": "4", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "3 Hour", "number": "3", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "2 Hour", "number": "2", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "1 Hour", "number": "1", "period": "Hour"},
-		{"doctype": "Prescription Duration", "name": "5 Week", "number": "5", "period": "Week"},
-		{"doctype": "Prescription Duration", "name": "4 Week", "number": "4", "period": "Week"},
-		{"doctype": "Prescription Duration", "name": "3 Week", "number": "3", "period": "Week"},
-		{"doctype": "Prescription Duration", "name": "2 Week", "number": "2", "period": "Week"},
-		{"doctype": "Prescription Duration", "name": "1 Week", "number": "1", "period": "Week"},
-		{"doctype": "Prescription Duration", "name": "6 Day", "number": "6", "period": "Day"},
-		{"doctype": "Prescription Duration", "name": "5 Day", "number": "5", "period": "Day"},
-		{"doctype": "Prescription Duration", "name": "4 Day", "number": "4", "period": "Day"},
-		{"doctype": "Prescription Duration", "name": "3 Day", "number": "3", "period": "Day"},
-		{"doctype": "Prescription Duration", "name": "2 Day", "number": "2", "period": "Day"},
-		{"doctype": "Prescription Duration", "name": "1 Day", "number": "1", "period": "Day"},
+		{"doctype": "Prescription Duration", "name": "3 Meses", "number": "3", "period": "Month"},
+		{"doctype": "Prescription Duration", "name": "2 Meses", "number": "2", "period": "Month"},
+		{"doctype": "Prescription Duration", "name": "1 Mes", "number": "1", "period": "Month"},
+		{"doctype": "Prescription Duration", "name": "12 Horas", "number": "12", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "11 Horas", "number": "11", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "10 Horas", "number": "10", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "9 Horas", "number": "9", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "8 Horas", "number": "8", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "7 Horas", "number": "7", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "6 Horas", "number": "6", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "5 Horas", "number": "5", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "4 Horas", "number": "4", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "3 Horas", "number": "3", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "2 Horas", "number": "2", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "1 Hora", "number": "1", "period": "Hour"},
+		{"doctype": "Prescription Duration", "name": "5 Semanas", "number": "5", "period": "Week"},
+		{"doctype": "Prescription Duration", "name": "4 Semanas", "number": "4", "period": "Week"},
+		{"doctype": "Prescription Duration", "name": "3 Semanas", "number": "3", "period": "Week"},
+		{"doctype": "Prescription Duration", "name": "2 Semanas", "number": "2", "period": "Week"},
+		{"doctype": "Prescription Duration", "name": "1 Semana", "number": "1", "period": "Week"},
+		{"doctype": "Prescription Duration", "name": "6 Días", "number": "6", "period": "Dia"},
+		{"doctype": "Prescription Duration", "name": "5 Días", "number": "5", "period": "Dia"},
+		{"doctype": "Prescription Duration", "name": "4 Días", "number": "4", "period": "Dia"},
+		{"doctype": "Prescription Duration", "name": "3 Días", "number": "3", "period": "Días"},
+		{"doctype": "Prescription Duration", "name": "2 Días", "number": "2", "period": "Dia"},
+		{"doctype": "Prescription Duration", "name": "1 Día", "number": "1", "period": "Dia"},
 	]
 	insert_record(records)
 
@@ -519,65 +519,32 @@ def create_dosage():
 	records = [
 		{
 			"doctype": "Prescription Dosage",
-			"name": "1-1-1-1",
-			"dosage": "1-1-1-1",
-			"dosage_strength": [
-				{"strength": "1.0", "strength_time": "9:00:00"},
-				{"strength": "1.0", "strength_time": "13:00:00"},
-				{"strength": "1.0", "strength_time": "17:00:00"},
-				{"strength": "1.0", "strength_time": "21:00:00"},
-			],
+			"name": "1-0-0-0",
+			"dosage": "1-0-0-0",
+			"dosage_strength": [{"strength": "1.0", "strength_time": "8:00:00"}],
 		},
 		{
 			"doctype": "Prescription Dosage",
-			"name": "0-0-1",
-			"dosage": "0-0-1",
-			"dosage_strength": [{"strength": "1.0", "strength_time": "20:00:00"}],
-		},
-		{
-			"doctype": "Prescription Dosage",
-			"name": "1-0-0",
-			"dosage": "1-0-0",
-			"dosage_strength": [{"strength": "1.0", "strength_time": "08:00:00"}],
-		},
-		{
-			"doctype": "Prescription Dosage",
-			"name": "0-1-0",
-			"dosage": "0-1-0",
+			"name": "0-1-0-0",
+			"dosage": "0-1-0-0",
 			"dosage_strength": [{"strength": "1.0", "strength_time": "14:00:00"}],
 		},
 		{
 			"doctype": "Prescription Dosage",
-			"name": "1-1-1",
-			"dosage": "1-1-1",
-			"dosage_strength": [
-				{"strength": "1.0", "strength_time": "08:00:00"},
-				{"strength": "1.0", "strength_time": "14:00:00"},
-				{"strength": "1.0", "strength_time": "20:00:00"},
-			],
+			"name": "0-0-1-0",
+			"dosage": "0-0-1-0",
+			"dosage_strength": [{"strength": "1.0", "strength_time": "20:00:00"}],
+		},
+			{
+			"doctype": "Prescription Dosage",
+			"name": "0-0-0-1",
+			"dosage": "0-0-0-1",
+			"dosage_strength": [{"strength": "1.0", "strength_time": "2:00:00"}],
 		},
 		{
 			"doctype": "Prescription Dosage",
-			"name": "1-0-1",
-			"dosage": "1-0-1",
-			"dosage_strength": [
-				{"strength": "1.0", "strength_time": "08:00:00"},
-				{"strength": "1.0", "strength_time": "20:00:00"},
-			],
-		},
-		{
-			"doctype": "Prescription Dosage",
-			"name": "0-1-1",
-			"dosage": "0-1-1",
-			"dosage_strength": [
-				{"strength": "1.0", "strength_time": "14:00:00"},
-				{"strength": "1.0", "strength_time": "20:00:00"},
-			],
-		},
-		{
-			"doctype": "Prescription Dosage",
-			"name": "1-1-0",
-			"dosage": "1-1-0",
+			"name": "1-1-0-0",
+			"dosage": "1-1-0-0",
 			"dosage_strength": [
 				{"strength": "1.0", "strength_time": "08:00:00"},
 				{"strength": "1.0", "strength_time": "14:00:00"},
@@ -585,10 +552,101 @@ def create_dosage():
 		},
 		{
 			"doctype": "Prescription Dosage",
-			"name": "Once Bedtime",
-			"dosage": "Once Bedtime",
-			"dosage_strength": [{"strength": "1.0", "strength_time": "21:00:00"}],
+			"name": "1-0-1-0",
+			"dosage": "1-0-1-0",
+			"dosage_strength": [
+				{"strength": "1.0", "strength_time": "8:00:00"},
+				{"strength": "1.0", "strength_time": "20:00:00"},
+			],
 		},
+		{
+			"doctype": "Prescription Dosage",
+			"name": "1-0-0-1",
+			"dosage": "1-0-0-1",
+			"dosage_strength": [
+				{"strength": "1.0", "strength_time": "08:00:00"},
+				{"strength": "1.0", "strength_time": "02:00:00"},
+			],
+		},
+		{
+			"doctype": "Prescription Dosage",
+			"name": "0-1-0-1",
+			"dosage": "0-1-0-1",
+			"dosage_strength": [
+				{"strength": "1.0", "strength_time": "14:00:00"},
+				{"strength": "1.0", "strength_time": "02:00:00"},
+			],
+		},
+		{
+			"doctype": "Prescription Dosage",
+			"name": "0-1-1-0",
+			"dosage": "0-1-1-0",
+			"dosage_strength": [
+				{"strength": "1.0", "strength_time": "14:00:00"},
+				{"strength": "1.0", "strength_time": "20:00:00"},
+			],
+		},
+		{
+			"doctype": "Prescription Dosage",
+			"name": "0-0-1-1",
+			"dosage": "0-0-1-1",
+			"dosage_strength": [
+				{"strength": "1.0", "strength_time": "20:00:00"},
+				{"strength": "1.0", "strength_time": "02:00:00"},
+			],
+		},
+		{
+			"doctype": "Prescription Dosage",
+			"name": "1-0-1-1",
+			"dosage": "1-0-1-1",
+			"dosage_strength": [
+				{"strength": "1.0", "strength_time": "08:00:00"},
+				{"strength": "1.0", "strength_time": "20:00:00"},
+				{"strength": "1.0", "strength_time": "02:00:00"}
+			],
+		},
+		{
+			"doctype": "Prescription Dosage",
+			"name": "1-1-0-1",
+			"dosage": "1-1-0-1",
+			"dosage_strength": [
+				{"strength": "1.0", "strength_time": "08:00:00"},
+				{"strength": "1.0", "strength_time": "14:00:00"},
+				{"strength": "1.0", "strength_time": "02:00:00"}
+			],
+		},
+		{
+			"doctype": "Prescription Dosage",
+			"name": "1-1-1-0",
+			"dosage": "1-1-1-0",
+			"dosage_strength": [
+				{"strength": "1.0", "strength_time": "08:00:00"},
+				{"strength": "1.0", "strength_time": "14:00:00"},
+				{"strength": "1.0", "strength_time": "20:00:00"}
+			],
+		},
+		{
+			"doctype": "Prescription Dosage",
+			"name": "0-1-1-1",
+			"dosage": "0-1-1-1",
+			"dosage_strength": [
+				{"strength": "1.0", "strength_time": "14:00:00"},
+				{"strength": "1.0", "strength_time": "20:00:00"},
+				{"strength": "1.0", "strength_time": "02:00:00"}
+			],
+		},
+		{
+			"doctype": "Prescription Dosage",
+			"name": "1-1-1-1",
+			"dosage": "1-1-1-1",
+			"dosage_strength": [
+				{"strength": "1.0", "strength_time": "08:00:00"},
+				{"strength": "1.0", "strength_time": "14:00:00"},
+				{"strength": "1.0", "strength_time": "20:00:00"},
+				{"strength": "1.0", "strength_time": "02:00:00"}
+			],
+		},
+		
 		#{
 		#	"doctype": "Prescription Dosage",
 		#	"name": "5 times a day",

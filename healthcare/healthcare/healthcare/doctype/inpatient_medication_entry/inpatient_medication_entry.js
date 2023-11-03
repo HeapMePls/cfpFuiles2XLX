@@ -2,6 +2,17 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Inpatient Medication Entry', {
+	inpatient_medication_entry_deatil: function(frm) {
+		frm.get_field('inpatient_medication_entry_detail').grid.editable_fields = [
+			{fieldname: 'patient', columns: 2},
+			{fieldname: 'motivo', columns: 2},
+			{fieldname: 'cantidad', columns: 1},
+      {fieldname: 'service_unit', columns: 2},
+			{fieldname: 'datetime', columns: 1},
+			{fieldname: 'drug_code', columns: 2}
+		];
+	},
+
 	refresh: function(frm) {
 		// Ignore cancellation of doctype on cancel all
 		frm.ignore_doctypes_on_cancel_all = ['Stock Entry'];
